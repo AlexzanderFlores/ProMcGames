@@ -205,8 +205,7 @@ public class ServerSelectorItem extends HubItemBase {
 				//ProPlugin.sendPlayerToServer(player, "kitpvp1");
 				plugin = Plugins.KIT_PVP;
 			} else if(event.getItem().getType() == Material.GOLDEN_APPLE) {
-				plugin = Plugins.UHC;
-				/*ProPlugin.sendPlayerToServer(player, "uhchub");
+				ProPlugin.sendPlayerToServer(player, "uhchub");
 				player.closeInventory();
 				final String playerName = player.getName();
 				new DelayedTask(new Runnable() {
@@ -217,7 +216,7 @@ public class ServerSelectorItem extends HubItemBase {
 							open(player, Plugins.UHC, false);
 						}
 					}
-				}, 10);*/
+				}, 10);
 			} else {
 				openInventory(player);
 			}
