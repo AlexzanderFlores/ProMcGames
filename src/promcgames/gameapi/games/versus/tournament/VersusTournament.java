@@ -1,57 +1,111 @@
 package promcgames.gameapi.games.versus.tournament;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.tournament.TournamentRoundStartEvent;
 import promcgames.gameapi.games.versus.MapProvider;
 import promcgames.gameapi.tournament.Tournament;
 import promcgames.gameapi.tournament.Tournament.Matchup;
+import promcgames.player.MessageHandler;
 import promcgames.server.util.EventUtil;
 
 public class VersusTournament implements Listener {
 	
-	private static boolean enabled = false;
+	private static VersusTournament instance = null;
 	
 	public VersusTournament() {
-		if(!enabled) {
-			enabled = true;
-			new Tournament(TournamentQueueHandler.getQueue());
+		if(instance == null) {
+			instance = this;
 			EventUtil.register(this);
+			new Tournament(TournamentQueueHandler.getQueue());
 		}
 	}
 	
 	@EventHandler
 	public void onTournamentRoundStart(TournamentRoundStartEvent event) {
-		List<Matchup> toRemove = new ArrayList<Matchup>();
-		for(Matchup matchup : Tournament.getTournament().getCurrentMatchups()) {
-			Player player1 = matchup.getPlayerOne();
-			Player player2 = matchup.getPlayerTwo();
-			if(player1 == null && player2 != null) {
-				Tournament.getTournament().getNotPlaying().add(player2.getName());
-			} else if(player1 != null && player2 == null) {
-				Tournament.getTournament().getNotPlaying().add(player1.getName());
-			} else if(player1 == null && player2 == null) {
-				Tournament.getTournament().getPlayers().remove(matchup.getPlayerOneName());
-				Tournament.getTournament().getPlayers().remove(matchup.getPlayerTwoName());
+		List<String> notPlaying = Tournament.getTournament().getNotPlaying();
+		List<String> players = Tournament.getTournament().getPlayers();
+		List<Matchup> currentMatchups = Tournament.getTournament().getCurrentMatchups();
+		
+		Iterator<Matchup> it = currentMatchups.iterator();
+		
+		while(it.hasNext()) {
+			Matchup matchup = it.next();
+			Player playerOne = matchup.getPlayerOne();
+			Player playerTwo = matchup.getPlayerTwo();
+			if(playerOne == null || playerTwo == null) {
+				currentMatchups.remove(matchup);
+			}
+			if(playerOne == null && playerTwo != null) {
+				players.remove(matchup.getPlayerOneName());
+				notPlaying.add(playerTwo.getName());
+			} else if(playerOne != null && playerTwo == null) {
+				notPlaying.add(playerOne.getName());
+				players.remove(matchup.getPlayerTwoName());
+			} else if(playerOne == null && playerTwo == null) {
+				players.remove(matchup.getPlayerOneName());
+				players.remove(matchup.getPlayerTwoName());
 			} else {
-				new MapProvider(player1, player2, Bukkit.getWorlds().get(0), true, true);
+				matchup.setFighting(true);
+				//new MapProvider(playerOne, playerTwo, Bukkit.getWorlds().get(0), true, true);
+				Bukkit.getLogger().info(playerOne.getName() + " will be fighting " + playerTwo.getName());
 			}
 		}
-		for(Matchup matchup : toRemove) {
-			Tournament.getTournament().getCurrentMatchups().remove(matchup);
+		while(notPlaying.size() >= 2) {
+			Tournament.getTournament().setNotPlayingMatchups();
+			it = currentMatchups.iterator();
+			while(it.hasNext()) {
+				Matchup matchup = it.next();
+				if(!matchup.getFighting()) {
+					Player playerOne = matchup.getPlayerOne();
+					Player playerTwo = matchup.getPlayerTwo();
+					if(playerOne == null || playerTwo == null) {
+						currentMatchups.remove(matchup);
+					}
+					if(playerOne == null && playerTwo != null) {
+						players.remove(matchup.getPlayerOneName());
+						notPlaying.add(playerTwo.getName());
+					} else if(playerOne != null && playerTwo == null) {
+						notPlaying.add(playerOne.getName());
+						players.remove(matchup.getPlayerTwoName());
+					} else if(playerOne == null && playerTwo == null) {
+						players.remove(matchup.getPlayerOneName());
+						players.remove(matchup.getPlayerTwoName());
+					} else {
+						matchup.setFighting(true);
+						new MapProvider(playerOne, playerTwo, Bukkit.getWorlds().get(0), true, true);
+					}
+				}
+			}
 		}
-		toRemove.clear();
-		toRemove = null;
+		if(notPlaying.size() == 1) {
+			String playerName = notPlaying.get(0);
+			Player player = ProPlugin.getPlayer(playerName);
+			if(player != null) {
+				player.teleport(Tournament.getTournament().getWaitingLocation());
+				MessageHandler.sendMessage(player, "You will wait this round out");
+			} else {
+				notPlaying.remove(playerName);
+				players.remove(playerName);
+			}
+		}
+	}
+	
+	public static void disable() {
+		HandlerList.unregisterAll(instance);
+		instance = null;
 	}
 	
 	public static boolean getEnabled() {
-		return enabled;
+		return instance != null;
 	}
 	
 }
