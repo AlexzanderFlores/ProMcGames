@@ -84,7 +84,17 @@ public class ServerSelectorItem extends HubItemBase {
 			new NPCEntity(EntityType.SNOWMAN, "&aSurvival Games", new Location(world, -105.5, 126.0, -185.5), Material.DIAMOND_SWORD) {
 				@Override
 				public void onInteract(Player player) {
-					open(player, Plugins.SURVIVAL_GAMES);
+					ProPlugin.sendPlayerToServer(player, "sghub");
+					final String name = player.getName();
+					new DelayedTask(new Runnable() {
+						@Override
+						public void run() {
+							Player player = ProPlugin.getPlayer(name);
+							if(player != null) {
+								open(player, Plugins.SGHUB);
+							}
+						}
+					}, 10);
 				}
 			};
 			new NPCEntity(EntityType.SNOWMAN, "&aSky Wars", new Location(world, -102.5, 126.0, -185.5), Material.GRASS) {
@@ -103,7 +113,17 @@ public class ServerSelectorItem extends HubItemBase {
 			new NPCEntity(EntityType.SNOWMAN, "&aHosted UHC", new Location(world, -96.5, 126.0, -184.5), Material.GOLDEN_APPLE) {
 				@Override
 				public void onInteract(Player player) {
-					open(player, Plugins.UHC);
+					ProPlugin.sendPlayerToServer(player, "uhchub");
+					final String name = player.getName();
+					new DelayedTask(new Runnable() {
+						@Override
+						public void run() {
+							Player player = ProPlugin.getPlayer(name);
+							if(player != null) {
+								open(player, Plugins.UHC);
+							}
+						}
+					}, 10);
 				}
 			};
 			new NPCEntity(EntityType.SNOWMAN, "&aArcade", new Location(world, -93.5, 126.0, -183.5), Material.SUGAR) {
