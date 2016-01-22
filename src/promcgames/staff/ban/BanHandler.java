@@ -406,11 +406,20 @@ public class BanHandler extends Punishment {
 							}
 							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/appealInfo", "&aSome ban types are only temporary bans");
 							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick here", "Click to appeal", "/appeal", "&aTo appeal your ban");
-							if(Ranks.SENIOR_MODERATOR.hasRank(viewer)) {
-								String staff = resultSet.getString("staff_uuid");
-								if(!staff.equals("CONSOLE")) {
-									staff = AccountHandler.getName(UUID.fromString(staff));
+							String staff = resultSet.getString("staff_uuid");
+							if(staff.equals("CONSOLE") || reason.equals("XRAY")) {
+								int day = resultSet.getInt("day") - Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+								if(day <= 0) {
+									ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick here", "Click to appeal", "/appeal", "&aThis player &eMAY &aappeal at this time");
+								} else {
+									MessageHandler.sendMessage(viewer, "This player &cMAY NOT &aappeal at this time");
+									MessageHandler.sendMessage(viewer, "You must wait &e" + day + " &amore day" + (day == 1 ? "" : "s"));
 								}
+							}
+							if(!staff.equals("CONSOLE")) {
+								staff = AccountHandler.getName(UUID.fromString(staff));
+							}
+							if(Ranks.SENIOR_MODERATOR.hasRank(viewer)) {
 								MessageHandler.sendMessage(viewer, "&c&lThis is ONLY shown to Sr. Mods and above");
 								MessageHandler.sendMessage(viewer, "Who banned? &e" + staff);
 							}
