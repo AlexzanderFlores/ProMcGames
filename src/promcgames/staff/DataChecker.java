@@ -45,7 +45,7 @@ public class DataChecker implements Listener {
 									String name = AccountHandler.getName(uuid);
 									String [] values = new String [] {uuidString, date};
 									int tickets = DB.STAFF_TICKETS_CLOSED.getInt(new String [] {"uuid", "date_closed"}, values, "amount");
-									int bans = DB.STAFF_BANS.getSize(new String [] {"staff_uuid", "date"}, values);
+									int bans = DB.STAFF_BAN.getSize(new String [] {"staff_uuid", "date"}, values);
 									String lifetimePlaytime = DB.PLAYERS_PLAY_TIME.getString("uuid", uuidString, "play_time");
 									String [] split = lifetimePlaytime.split("/");
 									lifetimePlaytime = split[0] + "w " + split[1] + "d " + split[2] + "h " + split[3] + "m " + split[4] + "s";
@@ -201,10 +201,10 @@ public class DataChecker implements Listener {
 				}
 			} else if(event.getItem().getType() == Material.SKULL_ITEM) {
 				Inventory inventorty = Bukkit.createInventory(event.getPlayer(), 9 * 1, "Ban Data - " + name);
-				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aLifetime Bans: " + DB.STAFF_BANS.getSize("staff_uuid", uuid)).getItemStack());
-				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aMonthly Bans: " + DB.STAFF_BANS.getSize(new String [] {"staff_uuid", "date"}, new String [] {uuid, date})).setLores(lores).getItemStack());
-				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aLifetime Unbans: " + DB.STAFF_UNBANS.getSize("staff_uuid", uuid)).getItemStack());
-				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aMonthly Unbans: " + DB.STAFF_UNBANS.getSize(new String [] {"staff_uuid", "date"}, new String [] {uuid, date})).setLores(lores).getItemStack());
+				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aLifetime Bans: " + DB.STAFF_BAN.getSize(new String [] {"staff_uuid", "active"}, new String [] {uuid, "1"})).getItemStack());
+				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aMonthly Bans: " + DB.STAFF_BAN.getSize(new String [] {"staff_uuid", "active", "date"}, new String [] {uuid, "1", date})).setLores(lores).getItemStack());
+				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aLifetime Unbans: " + DB.STAFF_BAN.getSize(new String [] {"staff_uuid", "active"}, new String [] {uuid, "1"})).getItemStack());
+				inventorty.addItem(new ItemCreator(Material.SKULL_ITEM).setName("&aMonthly Unbans: " + DB.STAFF_BAN.getSize(new String [] {"staff_uuid", "active", "date"}, new String [] {uuid, "1", date})).setLores(lores).getItemStack());
 				event.getPlayer().openInventory(inventorty);
 			} else if(event.getItem().getType() == Material.NAME_TAG) {
 				Inventory inventorty = Bukkit.createInventory(event.getPlayer(), 9 * 1, "Ticket Data - " + name);

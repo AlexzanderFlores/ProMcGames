@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -79,8 +80,11 @@ public class BanHandler extends Punishment {
 					// Detect if the command should be activated
 					PunishmentExecuteReuslts result = executePunishment(sender, arguments, false);
 					if(result.isValid()) {
+						UUID uuid = result.getUUID();
 						// See if the player is already banned
-						if(DB.STAFF_BANS.isUUIDSet(result.getUUID())) {
+						String [] keys = new String [] {"uuid", "active"};
+						String [] values = new String [] {uuid.toString(), "1"};
+						if(DB.STAFF_BAN.isKeySet(keys, values)) {
 							MessageHandler.sendMessage(sender, "&c" + arguments[0] + " is already " + getName());
 							return true;
 						}
@@ -94,18 +98,21 @@ public class BanHandler extends Punishment {
 						}
 						// Compile the message and proof strings
 						final String message = getReason(AccountHandler.getRank(sender), arguments, reason.toString(), result);
-						String proof = (arguments.length == 2 ? "none" : arguments[2]);
-						UUID uuid = result.getUUID();
 						String time = TimeUtil.getTime();
-						String address = AccountHandler.getAddress(uuid);
-						DB.STAFF_BANS.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + address + "', '" + reason.toString() + "', '" + proof + "', '" + time.substring(0, 7) + "', '" + time + "'");
+						String date = time.substring(0, 7);
+						int day = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+						DB.STAFF_BAN.insert("'" + uuid.toString() + "', 'null', '" + staffUUID + "', 'null', '" + reason + "', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
+						int id = DB.STAFF_BAN.getInt(keys, values, "id");
+						String proof = (arguments.length == 2 ? "none" : arguments[2]);
+						DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
+						//DB.STAFF_BAN.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + address + "', '" + reason.toString() + "', '" + proof + "', '" + time.substring(0, 7) + "', '" + time + "'");
 						// Perform any final execution instructions
 						MessageHandler.alert(message);
 						Bukkit.getPluginManager().callEvent(new PlayerBanEvent(uuid, sender));
 						// Execute the ban if the player is online
 						Player player = ProPlugin.getPlayer(arguments[0]);
 						if(player != null) {
-							ProPlugin.sendPlayerToServer(player, "slave");
+							//ProPlugin.sendPlayerToServer(player, "slave");
 							final String name = player.getName();
 							new DelayedTask(new Runnable() {
 								@Override
@@ -115,7 +122,7 @@ public class BanHandler extends Punishment {
 										player.kickPlayer(message);
 									}
 								}
-							}, 20 * 3);
+							}, 15);
 						}
 						// If they are banned for charging back then ban any account(s) that have had a rank transfered
 						if(reason == Violations.CHARGING_BACK && DB.PLAYERS_RANK_TRANSFERS.isUUIDSet(result.getUUID())) {
@@ -142,8 +149,11 @@ public class BanHandler extends Punishment {
 				// Detect if the command should be activated
 				PunishmentExecuteReuslts result = executePunishment(sender, arguments, false);
 				if(result.isValid()) {
+					UUID uuid = result.getUUID();
 					// See if the player is already banned
-					if(DB.STAFF_BANS.isUUIDSet(result.getUUID())) {
+					String [] keys = new String [] {"uuid", "active"};
+					String [] values = new String [] {uuid.toString(), "1"};
+					if(DB.STAFF_BAN.isKeySet(keys, values)) {
 						MessageHandler.sendMessage(sender, "&c" + arguments[0] + " is already " + getName());
 						return true;
 					}
@@ -157,10 +167,11 @@ public class BanHandler extends Punishment {
 					}
 					// Compile the message and proof strings
 					String message = getReason(AccountHandler.getRank(sender), arguments, "HACKING", result);
-					UUID uuid = result.getUUID();
 					String time = TimeUtil.getTime();
-					String address = AccountHandler.getAddress(uuid);
-					DB.STAFF_BANS.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + address + "', 'HACKING', 'Proof being uploaded soon', '" + time.substring(0, 7) + "', '" + time + "'");
+					String date = time.substring(0, 7);
+					int day = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+					DB.STAFF_BAN.insert("'" + uuid.toString() + "', 'null', '" + staffUUID + "', 'null', 'HACKING', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
+					//DB.STAFF_BANS.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + address + "', 'HACKING', 'Proof being uploaded soon', '" + time.substring(0, 7) + "', '" + time + "'");
 					// Perform any final execution instructions
 					MessageHandler.alert(message);
 					MessageHandler.sendMessage(sender, "&c&lYOU MUST UPLOAD PROOF AND REBAN");
@@ -183,11 +194,15 @@ public class BanHandler extends Punishment {
 						UUID uuid = AccountHandler.getUUID(arguments[0]);
 						if(uuid == null) {
 							MessageHandler.sendMessage(sender, "&c" + arguments[0] + " has never logged in before");
-						} else if(DB.STAFF_BANS.isUUIDSet(uuid)) {
-							Player player = (Player) sender;
-							display(uuid, player);
 						} else {
-							MessageHandler.sendMessage(sender, "&c" + arguments[0] + " is not banned");
+							String [] keys = new String [] {"uuid", "active"};
+							String [] values = new String [] {uuid.toString(), "1"};
+							if(DB.STAFF_BAN.isKeySet(keys, values)) {
+								Player player = (Player) sender;
+								display(uuid, player);
+							} else {
+								MessageHandler.sendMessage(sender, "&c" + arguments[0] + " is not banned");
+							}
 						}
 					}
 				});
@@ -204,20 +219,23 @@ public class BanHandler extends Punishment {
 						UUID uuid = AccountHandler.getUUID(name);
 						if(uuid == null) {
 							MessageHandler.sendMessage(sender, "&c" + name + " has never logged in before");
-						} else if(DB.STAFF_UNBANS.isUUIDSet(uuid)) {
-							int counter = 0;
-							for(String id : DB.STAFF_UNBANS.getAllStrings("id", "uuid", uuid.toString())) {
-								String time = DB.STAFF_UNBANS.getString("id", id, "time");
-								String reason = DB.STAFF_UNBANS.getString("id", id, "reason");
-								String staffUUID = DB.STAFF_UNBANS.getString("id", id, "staff_uuid");
-								String staffName = staffUUID;
-								if(!staffUUID.equals("CONSOLE")) {
-									staffName = AccountHandler.getName(UUID.fromString(staffUUID));
-								}
-								MessageHandler.sendMessage(sender, "&c#" + ++counter + " &e" + name + " was unbanned at " + time + " by " + staffName + " for " + reason);
-							}
 						} else {
-							MessageHandler.sendMessage(sender, "&c" + name + " has never been banned before");
+							String [] keys = new String [] {"uuid", "active"};
+							String [] values = new String [] {uuid.toString(), "0"};
+							if(DB.STAFF_BAN.isKeySet(keys, values)) {
+								int counter = 0;
+								for(String id : DB.STAFF_BAN.getAllStrings("id", "uuid", uuid.toString())) {
+									String time = DB.STAFF_BAN.getString("id", id, "unban_time");
+									String staffUUID = DB.STAFF_BAN.getString("id", id, "staff_uuid");
+									String staffName = staffUUID;
+									if(!staffUUID.equals("CONSOLE")) {
+										staffName = AccountHandler.getName(UUID.fromString(staffUUID));
+									}
+									MessageHandler.sendMessage(sender, "&c#" + ++counter + " &e" + name + " was unbanned at " + time + " by " + staffName);
+								}
+							} else {
+								MessageHandler.sendMessage(sender, "&c" + name + " has never been banned before");
+							}
 						}
 					}
 				});
@@ -228,7 +246,7 @@ public class BanHandler extends Punishment {
 	
 	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event) {
-		if(ProMcGames.getPlugin() != Plugins.HUB && ProMcGames.getPlugin() != Plugins.SLAVE && checkForBanned(event.getPlayer(), event.getAddress().getHostAddress())) {
+		if(ProMcGames.getPlugin() != Plugins.HUB && ProMcGames.getPlugin() != Plugins.SLAVE && checkForBanned(event.getPlayer())) {
 			event.setKickMessage(ChatColor.RED + "Failed to connect: You are banned");
 			event.setResult(Result.KICK_OTHER);
 		}
@@ -283,30 +301,20 @@ public class BanHandler extends Punishment {
 	}
 	
 	public static boolean checkForBanned(Player player) {
-		return checkForBanned(player, player.getAddress().getAddress().getHostAddress());
-	}
-	
-	public static boolean checkForBanned(Player player, String address) {
 		if(Ranks.isStaff(player)) {
 			return false;
 		}
 		if(!checkedForBanned.contains(Disguise.getName(player))) {
-			boolean uuidBanned = DB.STAFF_BANS.isUUIDSet(Disguise.getUUID(player));
-			boolean addressBanned = DB.STAFF_BANS.isKeySet("address", address);
-			if(ProMcGames.getPlugin() != Plugins.HUB && (uuidBanned || addressBanned)) {
+			String [] keys = new String [] {"uuid", "active"};
+			String [] values = new String [] {Disguise.getUUID(player).toString(), "1"};
+			boolean uuidBanned = DB.STAFF_BAN.isKeySet(keys, values);
+			if(ProMcGames.getPlugin() != Plugins.HUB && uuidBanned) {
 				return true;
 			}
 			checkedForBanned.add(Disguise.getName(player));
 			if(uuidBanned) {
 				hasBeenBanned.add(Disguise.getName(player));
 				display(Disguise.getUUID(player), player);
-				DB.STAFF_BANS.updateString("address", address, "uuid", Disguise.getUUID(player).toString());
-			} else if(addressBanned) {
-				hasBeenBanned.add(Disguise.getName(player));
-				MessageHandler.sendLine(player);
-				MessageHandler.sendMessage(player, "You have been IP BANNED: An account on your IP is BANNED");
-				MessageHandler.sendMessage(player, "Is this an unfair punishment? Appeal here: http://forum.promcgames.com/forums/punishment-appeals.11/");
-				MessageHandler.sendLine(player);
 			}
 		}
 		return hasBeenBanned.contains(Disguise.getName(player));
@@ -319,8 +327,8 @@ public class BanHandler extends Punishment {
 				ResultSet resultSet = null;
 				PreparedStatement statement = null;
 				try {
-					DB table = DB.STAFF_BANS;
-					statement = table.getConnection().prepareStatement("SELECT id, proof, reason, time, staff_uuid FROM " + table.getName() + " WHERE uuid = '" + uuid.toString() + "'");
+					DB table = DB.STAFF_BAN;
+					statement = table.getConnection().prepareStatement("SELECT id, reason, time, staff_uuid FROM " + table.getName() + " WHERE uuid = '" + uuid.toString() + "'");
 					resultSet = statement.executeQuery();
 					if(!resultSet.wasNull()) {
 						MessageHandler.sendLine(viewer);
@@ -330,16 +338,19 @@ public class BanHandler extends Punishment {
 							MessageHandler.sendMessage(viewer, "They have been BANNED:");
 						}
 						while(resultSet.next()) {
-							MessageHandler.sendMessage(viewer, "Banned at: &e" + resultSet.getString("time"));
+							String time = resultSet.getString("time");
+							if(time != null && !time.equals("null")) {
+								MessageHandler.sendMessage(viewer, "Banned at: &e" + time);
+							}
 							String reason = resultSet.getString("reason").replace("_", " ");
-							String proof = resultSet.getString("proof");
-							if(proof.equals("none")) {
-								MessageHandler.sendMessage(viewer, "Banned for: &a" + reason);
-							} else {
-								MessageHandler.sendMessage(viewer, "Banned for: &a" + reason + " &b" + proof);
+							if(reason != null && !reason.equals("null")) {
+								MessageHandler.sendMessage(viewer, "Banned for: &e" + reason);
 							}
 							if(reason.equalsIgnoreCase("XRAY")) {
 								MessageHandler.sendMessage(viewer, "&6&lXRAY BAN NOTE: &aYou may appeal 30 days after your ban on your FIRST offence. Xray bans after that CANNOT be appealed.");
+							}
+							for(String proof : DB.STAFF_BAN_PROOF.getAllStrings("ban_id", resultSet.getString("id"), "proof")) {
+								MessageHandler.sendMessage(viewer, "Proof: &e" + proof);
 							}
 							if(Ranks.SENIOR_MODERATOR.hasRank(viewer)) {
 								MessageHandler.sendMessage(viewer, "&c&lThe following is ONLY displayed to Sr. Mods and above");

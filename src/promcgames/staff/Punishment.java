@@ -124,7 +124,11 @@ public class Punishment implements Listener {
 		if(!(reversingPunishment || arguments.length == 1 || arguments.length == 2 || !reason.equals(Violations.HACKING.toString()))) {
 			proof = " " + ChatColor.DARK_GREEN + arguments[2];
 		}
-		return ChatColor.WHITE + playerRank.getPrefix() + arguments[0] + ChatColor.WHITE + " was " + getName() + ": " + ChatColor.RED + reason + proof;
+		String message = ChatColor.WHITE + playerRank.getPrefix() + arguments[0] + ChatColor.WHITE + " was " + getName();
+		if(reason != null && proof != null && !reason.equals("") && !proof.equals("")) {
+			message += ": " + ChatColor.RED + reason + proof;
+		}
+		return message;
 	}
 	
 	protected PunishmentExecuteReuslts executePunishment(CommandSender sender, String [] arguments, boolean reversingPunishment) {
@@ -139,7 +143,7 @@ public class Punishment implements Listener {
 				uuid = Disguise.getUUID(player);
 			}
 			if(uuid == null) {
-				MessageHandler.sendMessage(player, "&c" + arguments[0] + " has never logged in before");
+				MessageHandler.sendMessage(sender, "&c" + arguments[0] + " has never logged in before");
 			} else {
 				if(Bukkit.getPlayer(uuid) == null && DB.PLAYERS_LOCATIONS.isUUIDSet(uuid)) {
 					MessageHandler.sendMessage(sender, "&cCannot punish! Player is online on another server!");

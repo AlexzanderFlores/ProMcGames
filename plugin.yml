@@ -499,7 +499,7 @@ commands:
 
   unban:
     description: Unbans a specific player
-    usage: /unban <player name> <reason>
+    usage: /unban <player name>
 
   unMute:
     description: Unmutes a specific player

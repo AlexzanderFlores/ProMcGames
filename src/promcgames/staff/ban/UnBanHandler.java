@@ -2,7 +2,6 @@ package promcgames.staff.ban;
 
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -18,8 +17,8 @@ import promcgames.staff.Punishment;
 public class UnBanHandler extends Punishment {
 	public UnBanHandler() {
 		super("UnBanned");
-		// Command syntax: /unban <player name> <reason>
-		new CommandBase("unban", 2, -1) {
+		// Command syntax: /unban <player name>
+		new CommandBase("unban", 1) {
 			@Override
 			public boolean execute(CommandSender sender, String [] arguments) {
 				// Get the UUID of the target player
@@ -28,7 +27,9 @@ public class UnBanHandler extends Punishment {
 					MessageHandler.sendMessage(sender, "&c" + arguments[0] + " has never logged in");
 				} else {
 					// See the target player is banned
-					if(DB.STAFF_BANS.isUUIDSet(uuid)) {
+					String [] keys = new String [] {"uuid", "active"};
+					String [] values = new String [] {uuid.toString(), "1"};
+					if(DB.STAFF_BAN.isKeySet(keys, values)) {
 						// Detect if the command should be activated
 						PunishmentExecuteReuslts result = executePunishment(sender, arguments, true);
 						if(result.isValid()) {
@@ -40,24 +41,15 @@ public class UnBanHandler extends Punishment {
 								staff = Disguise.getName(player);
 								staffUUID = Disguise.getUUID(player).toString();
 							}
-							// Get the reason for the unban
-							String reason = "";
-							for(int a = 1; a < arguments.length; ++a) {
-								reason += arguments[a] + " ";
-							}
 							// Compile the message and proof strings
-							String message = getReason(AccountHandler.getRank(sender), arguments, reason, result, true);
-							String time = TimeUtil.getTime();
-							// Log the unban
-							DB.STAFF_UNBANS.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + reason.substring(0, reason.length() - 1) + "', '" + time.substring(0, 7) + "', '" + time + "'");
+							String message = getReason(AccountHandler.getRank(sender), arguments, "", result, true);
 							// Unban
-							DB.STAFF_BANS.deleteUUID(uuid);
-							Player player = Bukkit.getPlayer(uuid);
-							if(player == null) {
-								DB.STAFF_BANS.delete("address", AccountHandler.getAddress(result.getUUID()));
-							} else {
-								DB.STAFF_BANS.delete("address", player.getAddress().getAddress().getHostAddress());
-							}
+							String time = TimeUtil.getTime();
+							String date = time.substring(0, 7);
+							DB.STAFF_BAN.updateString("who_unbanned", staffUUID, keys, values);
+							DB.STAFF_BAN.updateString("unban_date", date, keys, values);
+							DB.STAFF_BAN.updateString("unban_time", time, keys, values);
+							DB.STAFF_BAN.updateInt("active", 0, keys, values);
 							// Perform any final execution instructions
 							MessageHandler.alert(message);
 						}

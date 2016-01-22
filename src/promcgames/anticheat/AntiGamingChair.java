@@ -1,6 +1,7 @@
 package promcgames.anticheat;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -126,6 +127,7 @@ public class AntiGamingChair {
 				final String message = StringUtil.color("&bAnti Gaming Chair: &f" + Disguise.getName(player) + " &chas been &4BANNED &cfor use of the black-listed modification: \"&e" + this.name + "&c\" " + information);
 				Bukkit.broadcastMessage(message);
 				String time = TimeUtil.getTime();
+				String date = time.substring(0, 7);
 				String uuid = "CONSOLE";
 				if(sender instanceof Player) {
 					Player staff = (Player) sender;
@@ -134,8 +136,15 @@ public class AntiGamingChair {
 				}
 				UUID playerUUID = Disguise.getUUID(player);
 				Bukkit.getPluginManager().callEvent(new PlayerBanEvent(playerUUID, sender));
-				DB.STAFF_BANS.insert("'" + playerUUID.toString() + "', '" + uuid + "', '" + player.getAddress().getAddress().getHostAddress() + "', 'HACKING', '" + this.name + "-" + information + "', '" + time.substring(0, 7) + "', '" + time + "'");
-				ProPlugin.sendPlayerToServer(player, "slave");
+				int day = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+				DB.STAFF_BAN.insert("'" + playerUUID.toString() + "', 'null', '" + uuid + "', 'null', 'HACKING', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
+				String proof = this.name + "-" + information;
+				String [] keys = new String [] {"uuid", "active"};
+				String [] values = new String [] {playerUUID.toString(), "1"};
+				int id = DB.STAFF_BAN.getInt(keys, values, "id");
+				DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
+				//DB.STAFF_BANS.insert("'" + playerUUID.toString() + "', '" + uuid + "', '" + player.getAddress().getAddress().getHostAddress() + "', 'HACKING', '" + this.name + "-" + information + "', '" + time.substring(0, 7) + "', '" + time + "'");
+				//ProPlugin.sendPlayerToServer(player, "slave");
 				final String name = player.getName();
 				new DelayedTask(new Runnable() {
 					@Override
@@ -146,7 +155,7 @@ public class AntiGamingChair {
 						}
 						banned.remove(name);
 					}
-				}, 20 * 3);
+				}, 15);
 			}
 		}
 	}

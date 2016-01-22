@@ -216,23 +216,6 @@ public class GlobalCommands {
 			}
 		};
 		
-		new CommandBase("resetIP", 1) {
-			@Override
-			public boolean execute(CommandSender sender, String [] arguments) {
-				String target = arguments[0];
-				UUID uuid = AccountHandler.getUUID(target);
-				if(uuid == null) {
-					MessageHandler.sendMessage(sender, "&c" + target + " has never logged in before");
-				} else if(DB.STAFF_BANS.isUUIDSet(uuid)) {
-					DB.STAFF_BANS.updateString("address", "NONE", "uuid", uuid.toString());
-					MessageHandler.sendMessage(sender, "Reset the IP of " + target);
-				} else {
-					MessageHandler.sendMessage(sender, "&c" + target + " is not banned");
-				}
-				return true;
-			}
-		}.setRequiredRank(Ranks.OWNER);
-		
 		new CommandBase("fix", 0, 1, true) {
 			@Override
 			public boolean execute(CommandSender sender, String [] arguments) {

@@ -293,8 +293,7 @@ public class PlaytimeTracker implements Listener {
 			if((afk != null && afk.contains(Disguise.getName(player))) || player.getVehicle() != null || player.getTicksLived() <= 40) {
 				continue;
 			}
-			String address = player.getAddress().getAddress().getHostAddress();
-			if(ProMcGames.getPlugin() == Plugins.HUB && BanHandler.checkForBanned(player, address)) {
+			if(ProMcGames.getPlugin() == Plugins.HUB && BanHandler.checkForBanned(player)) {
 				continue;
 			}
 			if(playtime.containsKey(player.getName())) {

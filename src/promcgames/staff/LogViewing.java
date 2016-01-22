@@ -139,7 +139,7 @@ public class LogViewing {
 								sendThreeMonthMessage(sender);
 								canApply = false;
 							}
-							if(DB.STAFF_BANS.isUUIDSet(uuid)) {
+							if(DB.STAFF_BAN.isUUIDSet(uuid)) {
 								MessageHandler.sendMessage(sender, "&4" + arguments[0] + " cannot apply because they are banned");
 								MessageHandler.sendMessage(sender, "View this with &b/isBanned " + arguments[0]);
 								canApply = false;
