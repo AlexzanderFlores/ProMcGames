@@ -125,8 +125,11 @@ public class Punishment implements Listener {
 			proof = " " + ChatColor.DARK_GREEN + arguments[2];
 		}
 		String message = ChatColor.WHITE + playerRank.getPrefix() + arguments[0] + ChatColor.WHITE + " was " + getName();
-		if(reason != null && proof != null && !reason.equals("") && !proof.equals("")) {
-			message += ": " + ChatColor.RED + reason + proof;
+		if(reason != null && !reason.equals("")) {
+			message += ": " + ChatColor.RED + reason;
+		}
+		if(proof != null && !proof.equals("")) {
+			message += proof;
 		}
 		return message;
 	}

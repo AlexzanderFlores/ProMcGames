@@ -32,6 +32,7 @@ import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
 import promcgames.server.tasks.AsyncDelayedTask;
@@ -328,37 +329,43 @@ public class BanHandler extends Punishment {
 				PreparedStatement statement = null;
 				try {
 					DB table = DB.STAFF_BAN;
-					statement = table.getConnection().prepareStatement("SELECT id, reason, time, staff_uuid FROM " + table.getName() + " WHERE uuid = '" + uuid.toString() + "'");
+					statement = table.getConnection().prepareStatement("SELECT id, reason, time, staff_uuid, attached_uuid, day FROM " + table.getName() + " WHERE uuid = '" + uuid.toString() + "' AND active = 1");
 					resultSet = statement.executeQuery();
 					if(!resultSet.wasNull()) {
 						MessageHandler.sendLine(viewer);
-						if(Disguise.getUUID(viewer) == uuid) {
-							MessageHandler.sendMessage(viewer, "You have been BANNED:");
-						} else {
-							MessageHandler.sendMessage(viewer, "They have been BANNED:");
-						}
+						MessageHandler.sendMessage(viewer, "&a&lThis account has been &c&lBANNED!");
 						while(resultSet.next()) {
-							String time = resultSet.getString("time");
-							if(time != null && !time.equals("null")) {
-								MessageHandler.sendMessage(viewer, "Banned at: &e" + time);
-							}
+							String id = resultSet.getString("id");
 							String reason = resultSet.getString("reason").replace("_", " ");
 							if(reason != null && !reason.equals("null")) {
-								MessageHandler.sendMessage(viewer, "Banned for: &e" + reason);
+								MessageHandler.sendMessage(viewer, "Why? &e" + reason);
 							}
-							if(reason.equalsIgnoreCase("XRAY")) {
-								MessageHandler.sendMessage(viewer, "&6&lXRAY BAN NOTE: &aYou may appeal 30 days after your ban on your FIRST offence. Xray bans after that CANNOT be appealed.");
+							int counter = 0;
+							for(String proof : DB.STAFF_BAN_PROOF.getAllStrings("proof", "ban_id", id)) {
+								MessageHandler.sendMessage(viewer, "Proof #" + (++counter) + " &e" + proof);
 							}
-							for(String proof : DB.STAFF_BAN_PROOF.getAllStrings("ban_id", resultSet.getString("id"), "proof")) {
-								MessageHandler.sendMessage(viewer, "Proof: &e" + proof);
+							String time = resultSet.getString("time");
+							if(time != null && !time.equals("null")) {
+								MessageHandler.sendMessage(viewer, "When? &e" + time);
 							}
+							String attached_uuid = resultSet.getString("attached_uuid");
+							if(attached_uuid.equalsIgnoreCase("null")) {
+								ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/banTypes", "&aType of ban? &eDIRECT");
+							} else {
+								ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/banTypes", "&aType of ban? &eASSOCIATION");
+							}
+							MessageHandler.sendMessage(viewer, "");
+							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/appealInfo", "&aSome ban types are only temporary bans");
+							MessageHandler.sendMessage(viewer, "");
+							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick here", "Click to appeal", "/appeal", "&aTo appeal your ban");
+							MessageHandler.sendMessage(viewer, "");
 							if(Ranks.SENIOR_MODERATOR.hasRank(viewer)) {
-								MessageHandler.sendMessage(viewer, "&c&lThe following is ONLY displayed to Sr. Mods and above");
-								String uuid = resultSet.getString("staff_uuid");
-								if(!uuid.equals("CONSOLE")) {
-									uuid = AccountHandler.getName(UUID.fromString(uuid));
+								String staff = resultSet.getString("staff_uuid");
+								if(!staff.equals("CONSOLE")) {
+									staff = AccountHandler.getName(UUID.fromString(staff));
 								}
-								MessageHandler.sendMessage(viewer, "Banned by: " + uuid);
+								MessageHandler.sendMessage(viewer, "&c&lThis is ONLY shown to Sr. Mods and above");
+								MessageHandler.sendMessage(viewer, "Banned by: " + staff);
 							}
 						}
 						if(Disguise.getUUID(viewer) == uuid) {
