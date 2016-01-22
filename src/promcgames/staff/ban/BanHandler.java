@@ -413,7 +413,7 @@ public class BanHandler extends Punishment {
 									ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick here", "Click to appeal", "/appeal", "&aThis player &eMAY &aappeal at this time");
 								} else {
 									MessageHandler.sendMessage(viewer, "This player &cMAY NOT &aappeal at this time");
-									MessageHandler.sendMessage(viewer, "You must wait &e" + day + " &amore day" + (day == 1 ? "" : "s"));
+									MessageHandler.sendMessage(viewer, "They must wait &e" + day + " &amore day" + (day == 1 ? "" : "s"));
 								}
 							}
 							if(!staff.equals("CONSOLE")) {
