@@ -20,6 +20,7 @@ import promcgames.player.EmeraldsHandler.EmeraldReason;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
+import promcgames.server.tasks.DelayedTask;
 
 /*
  * An instance of this object should only be initialized when a full
@@ -33,6 +34,7 @@ public class Tournament {
 	private List<Matchup> currentMatchups = null;
 	private List<String> players = null;
 	private List<String> notPlaying = null; // a list of players who will not play in the round; they will be matched up with each other in the end
+	private List<String> justDied = null;
 	private Events events = null;
 	private int winEmeralds = 0;
 	private int battleTimeLimit = 0; // in seconds; time limit for each battle
@@ -48,10 +50,15 @@ public class Tournament {
 		
 		private String playerOneName = null;
 		private String playerTwoName = null;
+		private boolean fighting = false;
 		
 		public Matchup(String playerOneName, String playerTwoName) {
 			this.playerOneName = playerOneName;
 			this.playerTwoName = playerTwoName;
+		}
+		
+		public void setFighting(boolean fighting) {
+			this.fighting = fighting;
 		}
 		
 		public Player getPlayerOne() {
@@ -80,6 +87,10 @@ public class Tournament {
 			return playerTwoName;
 		}
 		
+		public boolean getFighting() {
+			return fighting;
+		}
+		
 	}
 	
 	public Tournament(List<String> players) {
@@ -88,6 +99,7 @@ public class Tournament {
 			this.players = players;
 			this.notPlaying = new ArrayList<String>();
 			this.currentMatchups = new ArrayList<Matchup>();
+			this.justDied = new ArrayList<String>();
 			this.waitingLocation = Bukkit.getWorlds().get(0).getSpawnLocation();
 			this.respawnLocation = waitingLocation;
 			this.betweenRoundsTime = 30;
@@ -137,40 +149,41 @@ public class Tournament {
 		this.tournamentWinReason = tournamentWinReason;
 	}
 	
-	public void setNextMatchups() {
+	public void setPlayersMatchups() {
 		List<String> players = getPlayersCopy();
+		notPlaying.clear();
 		currentMatchups.clear();
 		if(players.size() >= 2) {
-			Random random = new Random();
 			while(!players.isEmpty()) {
+				Random random = new Random();
 				String playerOneName = null, playerTwoName = null;
-				int index = random.nextInt(players.size());
-				playerOneName = players.get(index);
-				players.remove(index);
-				Player playerOne = ProPlugin.getPlayer(playerOneName);
-				if(playerOne != null) {
-					if(players.isEmpty()) {
-						if(this.players.size() == 1) {
-							callWinEvent(playerOne);
-						} else {
-							playerOne.teleport(waitingLocation);
-							MessageHandler.sendMessage(playerOne, "You will sit this round out");
-						}
-					} else {
-						index = random.nextInt(players.size());
-						playerTwoName = players.get(index);
-						players.remove(index);
-						Player playerTwo = ProPlugin.getPlayer(playerTwoName);
-						if(playerTwo != null) {
-							Matchup matchup = new Matchup(playerOneName, playerTwoName);
-							currentMatchups.add(matchup);
-						} else {
-							players.add(playerOneName);
-							this.players.remove(playerTwoName);
-						}
-					}
+				playerOneName = players.get(random.nextInt(players.size()));
+				players.remove(playerOneName);
+				if(players.isEmpty()) {
+					notPlaying.add(playerOneName);
 				} else {
-					this.players.remove(playerOneName);
+					playerTwoName = players.get(random.nextInt(players.size()));
+					players.remove(playerTwoName);
+					currentMatchups.add(new Matchup(playerOneName, playerTwoName));
+				}
+			}
+		}
+	}
+	
+	public void setNotPlayingMatchups() {
+		List<String> notPlaying = getNotPlayingCopy();
+		if(notPlaying.size() >= 2) {
+			while(!notPlaying.isEmpty()) {
+				Random random = new Random();
+				String playerOneName = null, playerTwoName = null;
+				playerOneName = notPlaying.get(random.nextInt(notPlaying.size()));
+				notPlaying.remove(playerOneName);
+				if(!notPlaying.isEmpty()) {
+					playerTwoName = notPlaying.get(random.nextInt(notPlaying.size()));
+					notPlaying.remove(playerTwoName);
+					this.notPlaying.remove(playerOneName);
+					this.notPlaying.remove(playerTwoName);
+					currentMatchups.add(new Matchup(playerOneName, playerTwoName));
 				}
 			}
 		}
@@ -257,7 +270,15 @@ public class Tournament {
 			if(killer != null && isPlayerInTournament(killer)) {
 				killer.teleport(waitingLocation);
 			}
-			players.remove(player.getName());
+			final String playerName = player.getName();
+			players.remove(playerName);
+			justDied.add(playerName);
+			new DelayedTask(new Runnable() {
+				@Override
+				public void run() {
+					justDied.remove(playerName);
+				}
+			}, 20L);
 			removeMatchup(player);
 			alert(AccountHandler.getPrefix(player) + " &ahas been eliminated from the tournament" + (killer != null ? " by " + AccountHandler.getPrefix(killer) : ""));
 			if(players.size() == 1) {
@@ -309,6 +330,10 @@ public class Tournament {
 		return players.contains(player.getName());
 	}
 	
+	public boolean didPlayerJustDie(Player player) {
+		return justDied.contains(player.getName());
+	}
+	
 	public boolean getSpectateOnDeath() {
 		return spectateOnDeath;
 	}
@@ -333,6 +358,16 @@ public class Tournament {
 	
 	public List<String> getNotPlaying() {
 		return notPlaying;
+	}
+	
+	private List<String> getNotPlayingCopy() {
+		List<String> list = new ArrayList<>();
+		list.addAll(getNotPlaying());
+		return list;
+	}
+	
+	public List<String> getJustDied() {
+		return justDied;
 	}
 	
 	public List<Matchup> getCurrentMatchups() {

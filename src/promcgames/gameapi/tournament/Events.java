@@ -81,13 +81,14 @@ public class Events implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onTournamentRoundStart(TournamentRoundStartEvent event) {
 		Tournament.getTournament().setTournamentStatus(TournamentStatus.ONGOING_ROUND);
-		Tournament.getTournament().setNextMatchups();
+		Tournament.getTournament().setPlayersMatchups();
 		counter = Tournament.getTournament().getBattleTimeLimit() + 1;
 	}
 	
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onTournamentRoundEnd(TournamentRoundEndEvent event) {
 		Tournament.getTournament().setTournamentStatus(TournamentStatus.INBETWEEN_ROUND);
+		Tournament.getTournament().getNotPlaying().clear();
 		Tournament.getTournament().eliminateAllMatchups();
 		if(Tournament.getTournament().getPlayers().size() == 0) {
 			Tournament.getTournament().callEndEvent();
@@ -114,7 +115,7 @@ public class Events implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
-		if(Tournament.getTournament().isPlayerInTournament(player)) {
+		if(Tournament.getTournament().didPlayerJustDie(player)) {
 			event.setRespawnLocation(Tournament.getTournament().getRespawnLocation());
 			if(Tournament.getTournament().getSpectateOnDeath()) {
 				SpectatorHandler.add(player);
