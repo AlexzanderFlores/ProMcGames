@@ -31,6 +31,7 @@ import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;
+import promcgames.server.util.TimeUtil;
 
 public class AccountHandler implements Listener {
 	public enum Ranks {
@@ -353,8 +354,13 @@ public class AccountHandler implements Listener {
 				new AsyncDelayedTask(new Runnable() {
 					@Override
 					public void run() {
-						DB.PLAYERS_ACCOUNTS.updateString("name", Disguise.getName(player), "uuid", Disguise.getUUID(player).toString());
-						DB.PLAYERS_ACCOUNTS.updateString("address", address, "uuid", Disguise.getUUID(player).toString());
+						String uuid = Disguise.getUUID(player).toString();
+						String currentAddress = DB.PLAYERS_ACCOUNTS.getString("uuid", uuid, "address");
+						if(!currentAddress.equals(address) || !DB.PLAYERS_ADDRESSES.isKeySet("uuid", uuid)) {
+							DB.PLAYERS_ADDRESSES.insert("'" + uuid + "', '" + address + "', '" + TimeUtil.getTime() + "'");
+						}
+						DB.PLAYERS_ACCOUNTS.updateString("name", Disguise.getName(player), "uuid", uuid);
+						DB.PLAYERS_ACCOUNTS.updateString("address", address, "uuid", uuid);
 					}
 				});
 			}
@@ -367,6 +373,7 @@ public class AccountHandler implements Listener {
 					String name = Disguise.getName(player);
 					String rank = Ranks.PLAYER.toString();
 					DB.PLAYERS_ACCOUNTS.insert("'" + uuid + "', '" + name + "', '" + address + "', '" + rank + "'");
+					DB.PLAYERS_ADDRESSES.insert("'" + uuid + "', '" + address + "', '" + TimeUtil.getTime() + "'");
 					MessageHandler.alert("&eWelcome " + player.getName() + " to ProMcGames! &7(&c#" + DB.PLAYERS_ACCOUNTS.getSize() + "&7)");
 					if(launchFireworks) {
 						launchFireworks = false;
