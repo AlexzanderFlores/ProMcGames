@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -143,6 +144,24 @@ public class AntiGamingChair {
 				String [] values = new String [] {playerUUID.toString(), "1"};
 				int id = DB.STAFF_BAN.getInt(keys, values, "id");
 				DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
+				int counter = 0;
+				for(String uuidString : DB.PLAYERS_ACCOUNTS.getAllStrings("uuid", "address", AccountHandler.getAddress(playerUUID))) {
+					if(!uuidString.equals(uuid.toString())) {
+						Player online = Bukkit.getPlayer(UUID.fromString(uuidString));
+						if(online != null) {
+							online.kickPlayer(ChatColor.RED + "You have been banned due to sharing the IP of " + player.getName());
+						}
+						DB.STAFF_BAN.insert("'" + uuidString + "', '" + playerUUID.toString() + "', '" + uuid + "', 'null', 'HACKING', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
+						keys = new String [] {"uuid", "active"};
+						values = new String [] {uuidString, "1"};
+						id = DB.STAFF_BAN.getInt(keys, values, "id");
+						DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
+						++counter;
+					}
+				}
+				if(counter > 0) {
+					MessageHandler.alert("&cBanning &e" + counter + " &caccount" + (counter == 1 ? "" : "s") + " that shared the same IP as &e" + player.getName());
+				}
 				ProPlugin.sendPlayerToServer(player, "slave");
 				final String name = player.getName();
 				new DelayedTask(new Runnable() {

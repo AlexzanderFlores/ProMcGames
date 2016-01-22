@@ -101,6 +101,25 @@ public class BanHandler extends Punishment {
 						// Perform any final execution instructions
 						MessageHandler.alert(message);
 						Bukkit.getPluginManager().callEvent(new PlayerBanEvent(uuid, sender));
+						// Ban other accounts attached to the IP
+						int counter = 0;
+						for(String uuidString : DB.PLAYERS_ACCOUNTS.getAllStrings("uuid", "address", AccountHandler.getAddress(uuid))) {
+							if(!uuidString.equals(uuid.toString())) {
+								Player player = Bukkit.getPlayer(UUID.fromString(uuidString));
+								if(player != null) {
+									player.kickPlayer(ChatColor.RED + "You have been banned due to sharing the IP of " + arguments[0]);
+								}
+								DB.STAFF_BAN.insert("'" + uuidString + "', '" + uuid.toString() + "', '" + staffUUID + "', 'null', '" + reason + "', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
+								keys = new String [] {"uuid", "active"};
+								values = new String [] {uuidString, "1"};
+								id = DB.STAFF_BAN.getInt(keys, values, "id");
+								DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
+								++counter;
+							}
+						}
+						if(counter > 0) {
+							MessageHandler.alert("&cBanning &e" + counter + " &caccount" + (counter == 1 ? "" : "s") + " that shared the same IP as &e" + arguments[0]);
+						}
 						// Execute the ban if the player is online
 						Player player = ProPlugin.getPlayer(arguments[0]);
 						if(player != null) {
@@ -189,7 +208,21 @@ public class BanHandler extends Punishment {
 					MessageHandler.alert(message);
 					MessageHandler.sendMessage(sender, "&c&lYOU MUST UPLOAD PROOF AND REBAN");
 					Bukkit.getPluginManager().callEvent(new PlayerBanEvent(uuid, sender));
-					// Execute the ban if the player is online
+					// Ban other accounts attached to the IP
+					int counter = 0;
+					for(String uuidString : DB.PLAYERS_ACCOUNTS.getAllStrings("uuid", "address", AccountHandler.getAddress(uuid))) {
+						if(!uuidString.equals(uuid.toString())) {
+							Player player = Bukkit.getPlayer(UUID.fromString(uuidString));
+							if(player != null) {
+								player.kickPlayer(ChatColor.RED + "You have been banned due to sharing the IP of " + arguments[0]);
+							}
+							DB.STAFF_BAN.insert("'" + uuidString + "', '" + uuid.toString() + "', '" + staffUUID + "', 'null', 'HACKING', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
+							++counter;
+						}
+					}
+					if(counter > 0) {
+						MessageHandler.alert("&cBanning &e" + counter + " &caccount" + (counter == 1 ? "" : "s") + " that shared the same IP as &e" + arguments[0]);
+					}
 					// Execute the ban if the player is online
 					Player player = ProPlugin.getPlayer(arguments[0]);
 					if(player != null) {
@@ -369,6 +402,7 @@ public class BanHandler extends Punishment {
 								ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/banTypes", "&aType of ban? &eDIRECT");
 							} else {
 								ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/banTypes", "&aType of ban? &eASSOCIATION");
+								MessageHandler.sendMessage(viewer, "Associated with? &e" + AccountHandler.getName(UUID.fromString(attached_uuid)));
 							}
 							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/appealInfo", "&aSome ban types are only temporary bans");
 							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick here", "Click to appeal", "/appeal", "&aTo appeal your ban");
@@ -378,7 +412,7 @@ public class BanHandler extends Punishment {
 									staff = AccountHandler.getName(UUID.fromString(staff));
 								}
 								MessageHandler.sendMessage(viewer, "&c&lThis is ONLY shown to Sr. Mods and above");
-								MessageHandler.sendMessage(viewer, "Banned by: " + staff);
+								MessageHandler.sendMessage(viewer, "Who banned? &e" + staff);
 							}
 						}
 						if(Disguise.getUUID(viewer) == uuid) {
