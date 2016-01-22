@@ -43,6 +43,7 @@ import promcgames.player.Disguise;
 import promcgames.player.EmeraldsHandler;
 import promcgames.player.Friends;
 import promcgames.player.IgnoreHandler;
+import promcgames.player.MessageHandler;
 import promcgames.player.NameColor;
 import promcgames.player.Particles;
 import promcgames.player.PartyHandler;
@@ -226,24 +227,62 @@ public class ProMcGames extends JavaPlugin {
 			@Override
 			public boolean execute(CommandSender sender, String[] arguments) {
 				if(!(sender instanceof Player)) {
-					new Thread() {
-						@Override
-						public void run() {
-							try {
-								PreparedStatement ps = DB.STAFF_BAN.getConnection().prepareStatement("SELECT * FROM bans");
-								ResultSet rs = ps.executeQuery();
-								while(rs.next()) {
-									String uuid, staff_uuid, reason, proof, date, time;
-									uuid = rs.getString("uuid");
-									staff_uuid = rs.getString("staff_uuid");
-									reason = rs.getString("reason");
-									proof = rs.getString("");
+					if(arguments.length != 1) {
+						MessageHandler.sendMessage(sender, "wow u suck");
+						return true;
+					}
+					if(arguments[0].equalsIgnoreCase("bans")) {
+						new Thread() {
+							@Override
+							public void run() {
+								System.out.println("Process began");
+								try {
+									PreparedStatement ps = DB.STAFF_BAN.getConnection().prepareStatement("SELECT * FROM bans");
+									ResultSet rs = ps.executeQuery();
+									int ban_id = 1;
+									while(rs.next()) {
+										String uuid, staff_uuid, reason, date, time, proof;
+										uuid = rs.getString("uuid");
+										staff_uuid = rs.getString("staff_uuid");
+										reason = rs.getString("reason");
+										date = rs.getString("date");
+										time = rs.getString("time");
+										DB.STAFF_BAN.getConnection().prepareStatement("INSERT INTO ban (`uuid`, `staff_uuid`, `reason`, `date`, `time`, `day`, `active`, `who_unbanned`, `unban_date`, `unban_time`, `attached_uuid`) VALUES ('" + uuid + "', '" + staff_uuid + "', '" + reason + "', '" + date + "', '" + time + "', '30', '1', 'null', 'null', 'null', 'null')").executeQuery();
+										
+										proof = rs.getString("proof");
+										DB.STAFF_BAN_PROOF.insert("'" + ban_id + "', '" + proof + "'");
+										ban_id++;
+									}
+								} catch (SQLException e) {
+									e.printStackTrace();
 								}
-							} catch (SQLException e) {
-								e.printStackTrace();
+								System.out.println("bans done SWAG YOLO 420 YOLOYOLOYOLOYOLO");
 							}
-						}
-					}.start();
+						}.start();
+					} else {
+						new Thread() {
+							@Override
+							public void run() {
+								System.out.println("Process began");
+								try {
+									PreparedStatement ps = DB.STAFF_BAN.getConnection().prepareStatement("SELECT * FROM unbans");
+									ResultSet rs = ps.executeQuery();
+									while(rs.next()) {
+										String uuid, who_unbanned, unban_date, unban_time;
+										uuid = rs.getString("uuid");
+										who_unbanned = rs.getString("staff_uuid");
+										unban_date = rs.getString("date");
+										unban_time = rs.getString("time");
+										DB.STAFF_BAN.getConnection().prepareStatement("INSERT INTO ban (`uuid`, `who_unbanned`, `unban_date`, `unban_time`, `day`, `active`, `attached_uuid`, `staff_uuid`, `reason`, `date`, `time`) "
+												+ "VALUES ('" + uuid + "', '" + who_unbanned + "', '" + unban_date + "', '" + unban_time + "', '0', '0', 'null', 'null', 'null', 'null', 'null')").executeQuery();
+									}
+								} catch (SQLException e) {
+									e.printStackTrace();
+								}
+								System.out.println("unbans done SWAG YOLO 420 YOLOYOLOYOLOYOLO");
+							}
+						}.start();
+					}
 				}
 				return true;
 			}
