@@ -1,0 +1,871 @@
+name: ProMcGamesCore
+main: promcgames.ProMcGames
+version: 2
+authors: [Leet_Gamer, tacobells199]
+description: Core plugin for the ProMcGames network
+softdepend: [ProMcAPI, Votifier, EffectLib, ProtocolLib, HolographicDisplays]
+commands:
+  serverSend:
+    usage: /<command>
+    
+  clientSend:
+    usage: /<command>
+    
+  listServers:
+    usage: /<command>
+
+# Global Commands
+  connection:
+    description: Networking connection options
+    usage: /connection <additional arguments>
+
+  trophies:
+    description: Opens the trophies inventory
+    usage: /trophies
+
+  apply:
+    description: Displays a link to our staff application forum section
+    usage: /apply
+
+  appeal:
+    description: Displays a link to our mute and ban appeal forum section
+    usage: /appeal
+    
+  arrowTrails:
+    description: Displays particles on the arrow when it is shot
+    usage: /arrowTrails
+
+  autoJoin:
+    description: Sends you to the next available game
+    usage: /autoJoin
+
+  buy:
+    description: Displays a link to our buycraft store
+    usage: /buy
+
+  canApply:
+    description: Displays if a specific player can apply for staff based on some requirements
+    usage: /canApply <player name>
+
+  coloredChat:
+    description: Displays how to use colored chat
+    usage: /coloredChat
+
+  communityLevel:
+    description: Displays a players community level
+    usage: /communityLevel [player name]
+
+  clan:
+    description: Clan related commands
+    usage: /clan [additional arguments]
+    aliases: [clans, c]
+
+  credits:
+    description: Displays who made the map you're currently on
+    usage: /credits
+
+  disguise:
+    description: Hides you as another player
+    usage: /disguise
+    aliases: [d]
+
+  elo:
+    description: Displays the current elo of an online player
+    usage: /elo [player name]
+
+  emeralds:
+    description: Displays the amount of emerald a player has
+    usage: /emeralds [player name]
+    aliases: [bal]
+
+  fakeDisable:
+    description: Fake disable
+    usage: /fakeDisable <name> <type>
+
+  fix:
+    description: Fixes the placement of yourself or another player
+    usage: /fix [player name]
+
+  forums:
+    description: Displays a link to our forums
+    usage: /forums
+
+  friends:
+    description: Displays your friends
+    usage: /friends [name to add]
+    aliases: [friend]
+
+  gameNight:
+    description: Manages Game Nights
+    usage: /gameNight <additional arguments>
+
+  getLocation:
+    description: Displays your current location
+    usage: /getLocation
+
+  getVersion:
+    description: Displays a player's client version
+    usage: /getVersion [name]
+
+  help:
+    description: Displays basic information about ProMc
+    usage: /help
+
+  hub:
+    description: Sends a player to a hub server
+    usage: /hub
+
+  ignore:
+    description: Ignores or stops ignoring a specific player
+    usage: /ignore <player name>
+
+  isBanned:
+    description: Displays if a player is banned and why
+    usage: /isBanned <player name>
+
+  isMuted:
+    description: Displays if a player is muted and why
+    usage: /isMuted <player name>
+
+  join:
+    description: Teleports you to a specific server
+    usage: /join <server name>
+    aliases: [server]
+
+  killAura:
+    description: Detects if a player has kill aura enabled
+    usage: /killAura <player name>
+
+  lag:
+    description: Displays lag information about that specific server
+    usage: /lag
+
+  list:
+    description: List all players connected to the current server
+    usage: /list
+
+  msg:
+    description: Sends another player a private message
+    usage: /msg <player name> <message>
+    aliases: [m]
+
+  nameColor:
+    description: Colors your name
+    usage: /nameColor <color code>
+
+  omn:
+    description: Manages Open Mic Night
+    usage: /omn <additional arguments>
+
+  prizes:
+    description: Displays prizes to top 3 players for monthy stats
+    usage: /prizes
+
+  pTime:
+    description: Sets the player's time
+    usage: /ptime <ticks>
+
+  viewKicks:
+    description: Displays all past kicks of a player
+    usage: /viewKicks [player name]
+
+  viewDeletedKicks:
+    description: Displays all past kicks of a player that have been deleted
+    usage: /viewDeletedKicks [player name]
+
+  viewMutes:
+    description: Displays all current mutes of a player
+    usage: /viewMutes [player name]
+
+  particles:
+    description: Displays particles around a player
+    usage: /particles
+
+  party:
+    description: Manages parties
+    usage: /party <additional arguments>
+    aliases: [p, team, t]
+
+  ping:
+    description: Displays a player's ping
+    usage: /ping [player name]
+
+  playTime:
+    description: Displays a playtime count for a player
+    usage: /playTime [playername]
+
+  proTrial:
+    description: Displays how much longer your Pro trial lasts
+    usage: /proTrial [name]
+
+  resetProTrial:
+    description: Resets a player's Pro Trial usage
+    usage: /resetProTrial <name>
+
+  r:
+    description: Replies to a player who sent you a private message
+    usage: /r <message>
+
+  ranks:
+    description: Displays a link to a forum thread about our ranks
+    usage: /ranks
+
+  report:
+    description: Displays a link to the forum's report section
+    usage: /report
+
+  rules:
+    description: Displays a link to a forum thread about our network rules
+    usage: /rules
+
+  seen:
+    description: Locates a player
+    usage: /seen <name>
+
+  shout:
+    description: Says a message to both teams
+    usage: /shout <message>
+
+  spawn:
+    description: Teleports a player to the spawn of their world
+    usage: /spawn
+
+  sponsorParticles:
+    description: Opens a selector for spiral particles for when a SG sponsor lands
+    usage: /sponsorParticles
+
+  staff:
+    description: Displays all online staff and what server they're currently connected to
+    usage: /staff
+
+  staffHere:
+    description: Displays the staff currently on the server
+    usage: /staffHere
+
+  staffData:
+    description: Looks up staff data
+    usage: /staffData [staff name]
+
+  monthlyStaffData:
+    description: Displays the monthly staff data of all staff
+    usage: /monthlyStaffData
+
+  stats:
+    description: Displays the stats of a specific player for a specific game
+    usage: /stats [player name]
+
+  systemTime:
+    description: Displays the current system time
+    usage: /systemTime
+
+  ticket:
+    description: Base command for the ticketing system
+    usage: /ticket create <name> hacking
+
+  tiering:
+    description: Describes our chest tiering system
+    usage: /tiering
+
+  togglePMs:
+    description: Toggles the ability to receive private messages
+    usage: /togglePMs
+
+  ts:
+    description: Displays the IP address to our Team Speak server
+    usage: /ts
+
+  twitter:
+    description: Displays links to the Pro Mc Games related twitters
+    usage: /twitter
+
+  vote:
+    description: Allows you to vote for the server
+    usage: /vote
+
+  voteGoal:
+    description: Displays information about our vote goal
+    usage: /voteGoal
+
+# Op Only Global Commands
+  addEmeralds:
+    description: Gives a specific amount of emeralds to a player
+    usage: /addEmeralds <player name> <amount>
+
+  addHubSponsors:
+    description: Gives a player hub sponsors
+    usage: /addHubSponsors <name> <amount> <true | false for premium>
+
+  addKit:
+    description: Gives a player a kit
+    usage: /addKit <name> <kit>
+
+  addKitPVPAutoRegenPass:
+    description: Gives a player Kit PVP Auto Regen Passes
+    usage: /addKitPVPAutoRegenPass <player name> <amount>
+
+  addFreeCheckPoints:
+    description: Gives a player free checkpoints for the hub parkour
+    usage: /addFreeCheckPoints <player name> <amount>
+
+  addMapVotePasses:
+    description: Gives a player map vote passes
+    usage: /addMapVotePasses <player name> <amount>
+
+  addZombiePoints:
+    description: Adds zombie points
+    usage: /addZombiePoints <amount>
+
+  addSGAutoSponsors:
+    description: Gives a player SG Auto Sponsors
+    usage: /addSGAutoSponsors <player name> <amount>
+
+  addVotePass:
+    description: Adds vote passes to a specific player
+    usage: /addVote <player name> <amount>
+
+  alert:
+    description: Does a network wide alert
+    usage: /alert <text>
+
+  autoAlert:
+    description: 
+    usage: /autoAlert help
+    aliases: [aa]
+
+  deployHubBuild:
+    description: Deploys your current world as the new hub build
+    usage: /deployHubBuild
+
+  deployVersusBuild:
+    description: Deploys your current world as the new versus build
+    usage: /deployVersusBuild
+
+  clearStaff:
+    description: Deletes the online staff table
+    usage: /clearStaff
+
+  factionsCommand:
+    description: Processes a factions command until the command is correctly ran
+    usage: /factionsCommand
+
+  forceRank:
+    description: Sets a players rank even if they have not logged in before
+    usage: /forceRank <uuid> <name> <rank>
+
+  globalHubUpdate:
+    description: Restarts each hub server in X minutes where X is the hub number
+    usage: /globalHubUpdate [stop]
+
+  gmc:
+    description: Sets the command sender to the creative game mode
+    usage: /gmc
+
+  gms:
+    description: Sets the command sender to the survival game mode
+    usage: /gms
+
+  hubSponsorGiveaway:
+    description: Gives everyone on the server a hub sponsor
+    usage: /hubSponsorGiveaway <delay in minutes>
+
+  poll:
+    description: In game voting for feature changes
+    usage: /poll
+
+  resetIP:
+    description: Resets a banned IP address
+    usage: /resetIP <IGN>
+
+  resetParkourTime:
+    description: Resets a player's parkour time
+    usage: /resetParkourTime <name>
+
+  restartServer:
+    description: Restarts a specific server
+    usage: /restartServer <delay in minutes>
+
+  restartIfEmpty:
+    description: Restarts the server if no players are on it
+    usage: /restartIfEmpty
+
+  say:
+    description: Broadcasts a message to your current server
+    usage: /say <message>
+
+  serverMute:
+    description: Disabled chat on the current server
+    usage: /serverMute <duration in minutes> <reason>
+
+  setRank:
+    description: Sets a player's rank
+    usage: /setRank <player name> <target rank> <"true" or "false" (ignore if rank is already set)>
+
+  shadowMute:
+    usage: /shadowMute <player name>
+
+  test:
+    description: Testing stuffs
+    usage: /test
+
+  tweetInfo:
+    description: Displays information about the most recent tweet
+    usage: /tweetInfo
+
+  toggleDebug:
+    description: Toggles debug mode on and off
+    usage: /toggleDebug
+
+  tpPos:
+    description: Teleports you to specific coordinates
+    usage: /tpPos <x> <y> <z>
+
+  updateRank:
+    description: Updates a rank only in memory if the player is online
+    usage: /updateRank <player name> <rank>
+
+  updateCheckpoints:
+    description: Updates the amount of free hub parkour checkpoints for a player
+    usage: /updateCheckpoints <player name>
+
+  win:
+   description: Makes you win the current game
+   usage: /win
+
+# Staff Commands
+  ban:
+    description: Denies access to non-hub servers on the network and use of the server chat
+    usage: /ban <player name> <reason> <proof>
+
+  srban:
+    description: Denies access to non-hub servers on the network and use of the server chat
+    usage: /srban <player name>
+
+  undoKick:
+    description: Will delete a kick, used for invalid kicks
+    usage: /undoKick <target name> <kick ID> <reason for deletion>
+
+  getAccounts:
+    description: Gets all accounts that have logged in with the same IP as a specific account
+    usage: /getAccounts <name>
+
+  getDisguise:
+    description: Gets the real name for a disguised name
+    usage: /getDisguise <disguised name>
+
+  getIPFromName:
+    description: Gets an IP from a name
+    usage: /getIPFromName <name>
+
+  getNameFromIP:
+    description: Gets a name from an IP address
+    usage: /getNameFromIP <IP>
+
+  getUUIDFromName:
+    description: Gets a UUID from a name
+    usage: /getUUIDFromName <name>
+
+  getNameFromUUID:
+    description: Gets the name from a UUID
+    usage: /getNameFromUUID <UUID>
+
+  getRank:
+    description: Displays what rank a player has
+    usage: /getRank <name>
+
+  getRankTransfers:
+    description: Displays if a player has transfered their rank to another account
+    usage: /getRankTransfers <name>
+
+  getStaffPlayTime:
+    description: Displays the monthly playtime for each staff member
+    usage: /getStaffPlayTime
+
+  kick:
+    description: Disconnects a player from the network
+    usage: /kick <player name> <reason> <proof>
+
+  mute:
+    description: Denies access to use of the server chat
+    usage: /mute <player name> <reason> <proof>
+
+  s:
+    description: Sends a message that only staff on your current server can receive
+    usage: /s <message>
+
+  staffMode:
+    aliases: [sm]
+    description: Vanishes the sender, hides them from any command to locate a staff member executed from a non-staff member
+    usage: /staffMode [tp] [player name]
+
+  unban:
+    description: Unbans a specific player
+    usage: /unban <player name> <reason>
+
+  unMute:
+    description: Unmutes a specific player
+    usage: /unMute <player name> <reason>
+
+  clearChat:
+    description: Clears chat
+    usage: /clearChat
+
+  whoUnbanned:
+    description: Displays who unbanned a player
+    usage: /whoUnbanned <name>
+
+# Hub Commands
+  head:
+    description: Sets your skull to another player's head
+    usage: /head <name>
+
+  dispatchCommand:
+    description: Dispatches a command to a specific server
+    usage: /dispatchCommand <command>
+
+  rankTransfer:
+    description: Transfers a rank from one player to another
+    usage: /rankTransfer <target>
+
+  statReset:
+    description: Resets a player's stats for one specific game
+    usage: /statReset
+
+  viewRewards:
+    description: Displays player's previous Hub Sponsor rewards
+    usage: /viewRewards <name>
+
+  giftGiver:
+    description: Teleports the player to the gift giver NPC
+    usage: /giftGiver
+
+  snowBall:
+    description: Handles the banning and unbanning of players from the snowball mode
+    usage: /snowBall <additional arguments>
+
+# Building Commands
+  saveSkyWarsIsland:
+    description: Saves a sky wars island
+    usage: /saveSkyWarsIsland <name>
+
+  defineGameSpawn:
+    description: Defines a game spawn point in a configuration file
+    usage: /defineGameSpawn [spawn id]
+
+  defineFallingChest:
+    description: Defines a Survival Games falling chest location for the start of the game
+    usage: /defineChest [chest id]
+
+  nameItem:
+    description: Names the item in your hand
+    usage: /nameItem <name | lore> [lore]
+
+  purchase:
+    description: Declares another purchase
+    usage: /purchase <name> <package name>
+
+# Mini-Game Commands
+  grace:
+    description: Sets the grace period time
+    usage: /grace <time in seconds>
+
+  startGame:
+    description: Starts the current game counter
+    usage: /startGame
+
+  setTimer:
+    description: Sets the current game timer
+    usage: /setTimer <time in seconds>
+
+  spectate:
+    description: Spectates a specific player
+    usage: /spectate <player name>
+    aliases: [spec]
+
+# Survival Games Commands
+  addExclusiveSponsorPasses:
+    description: Gives a player exclusive sponsor passes
+    usage: /addExclusiveSponsorPasses <name> <usage>
+
+  sponsor:
+    description: Sponsors a player
+    usage: /sponsor <player name> <"normal" or "super">
+
+  craft:
+    description: Opens a crafting table
+    usage: /craft
+
+  enchant:
+    description: Opens an enchanting table
+    usage: /enchant
+
+# Versus Commands
+  tournament:
+    description: Versus tournament commands
+    usage: /tournament <additional arguments>
+
+  queue:
+    description: Versus tournament queue commands
+    usage: /queue <additional arguments>
+
+  done:
+    description: Quits hot bar editor
+    usage: /done
+
+  quit:
+    description: Makes you leave a versus game
+    usage: /quit
+
+  battle:
+    description: Used to send a private battle request to a player.
+    usage: /battle <name of opponent>
+
+  versusStats:
+    description: Displays versus status
+    usage: /versusStats [player name]
+
+  gameWon:
+    description: Displays who won a SG game to the SG hub
+    usage: /gameWon <alert>
+
+  giveHotBarPasses:
+    description: Gives a player hot bar passes
+    usage: /giveHotBarPasses <name> <amount>
+
+# Factions Commands
+  coins:
+    description: Displays how many coins you have
+    usage: /coins
+    aliases: [bal]
+
+  addCoins:
+    description: Gives a player coins
+    usage: /addCoins <name> <amount>
+
+  giveKey:
+    description: Gives a player a crate key
+    usage: /giveKey <name> <type>
+
+  giveSpawner:
+    description: Gives a player a mob spawner
+    usage: /giveSpawner <name> <type>
+
+  setFactionsRank:
+    description: Sets a players factions rank
+    usage: /setFactionsRank <name> <rank>
+
+  setHome:
+    description: Set a home
+    usage: /setHome [home number]
+
+  home:
+    description: Teleport to a home
+    usage: /home [home number]
+
+  echest:
+    description: Opens your ender chest
+    usage: /echest
+
+  feed:
+    description: Fills your hunger bar
+    usage: /feed
+
+  ext:
+    description: Extinguish yourself if you are on fire
+    usage: /ext
+
+  repair:
+    description: Repairs the item you are holding
+    usage: /repair
+
+  repairAll:
+    description: Repairs all items in your inventory
+    usage: /repairAll
+
+  tpa:
+    description: Requests to teleport to a player
+    usage: /tpa <target player>
+
+  tpToggle:
+    description: Toggles allowing teleport requests
+    usage: /tpToggle
+
+  tpAccept:
+    description: Accepts a teleport request
+    usage: /tpAccept
+
+  tpDeny:
+    description: Denies a teleport request
+    usage: /tpDeny
+
+  hasJellyLegs:
+    description: Displays if a player has jelly legs
+    usage: /hasJellyLegs <player name>
+
+  giveJellyLegs:
+    description: Gives a player Jelly Legs
+    usage: /giveJellyLegs <name>
+
+  back:
+    description: Teleports you to your previous location
+    usage: /back
+
+# UHC Commands
+  scenarios:
+    description: Displays the scenario manager for UHC hosts
+    usage: /scenarios
+
+  appleRates:
+    description: Displays or edits the apple rates for a UHC game
+    usage: /appleRates
+
+  heal:
+    description: Heals players
+    usage: /heal <player name OR all>
+
+  feed:
+    description: Feeds all players
+    usage: /feed <player name OR all>
+
+  health:
+    description: Displays the health of a player
+    usage: /health <player name>
+    aliases: [h]
+
+  host:
+    description: UHC host management command
+    usage: /host help
+
+  helpop:
+    description: Communicate with the hosts
+    usage: /helpop <text>
+
+  isNetherOn:
+    description: Displays if the nether is on or not
+    usage: /isNetherOn
+
+  invSee:
+    description: Opens a copy of a player's inventory
+    usage: /invSee <player name>
+
+  opensIn:
+    description: Declares when the game will open
+    usage: /opensIn <delay in minutes>
+
+  uhcOver:
+    description: Ends a UHC game
+    usage: /uhcOver
+
+  tweet:
+    description: Tweets out your game information
+    usage: /tweet
+
+  endTweet:
+    description: Tweets out the winners of your game
+    usage: /endTweet <scoreboard screen shot url> <winner names>
+
+  setBorder:
+    description: Sets a border radius in a UHC game
+    usage: /setBorder <radius>
+
+  info:
+    description: Displays information about the current game
+    usage: /info
+
+  sc:
+    description: Displays your teams coordinates
+    usage: /sc
+    aliases: [tl, pmCoords]
+
+  lateScatter:
+    description: Scatters a player
+    usage: /lateScatter <player name>
+
+  teamChat:
+    description: Allows you to chat with your team mates
+    usage: /teamChat [message]
+    aliases: [tc]
+
+  uhcKick:
+    description: Kicks a player
+    usage: /uhcKick <player name> <reason>
+
+  uhcKill:
+    description: Kills a player
+    usage: /uhcKill <player name> <reason>
+
+  uhcAlert:
+    description: Alerts a UHC game
+    usage: /uhcAlert
+
+  sinfo:
+    description: Explains the current scenarios
+    usage: /sinfo
+
+  hc:
+    description: Host chat command
+    usage: /hc <text>
+
+  bucket:
+    description: Alerts whenever a player uses a water bucket
+    usage: /bucket [player name]
+
+  commandSpy:
+    description: Displays when a player runs a command
+    usage: /commandSpy
+
+  muteChat:
+    description: Toggles the chat mute
+    usage: /muteChat
+
+  wl:
+    description: Adds or removes a player from the whitelist
+    usage: /wl <name>
+
+  compass:
+    description: Gives a player a compass
+    usage: /compass <name>
+    
+  radiusWarn:
+    description: Tells a player to head towards the center
+    usage: /radiusWarn <name>
+
+  kit:
+    description: Opens the kit selector
+    usage: /kit
+
+  warp:
+    description: Opens the warp selector
+    usage: /warp
+
+  giveCreeperEgg:
+    description: Gives a player creeper eggs
+    usage: /giveCreeperEgg <name> <amount>
+
+  pokeBall:
+    description: Displays information about pokeballs
+    usage: /pokeBall
+
+  tele:
+    description: Teleports players
+    usage: /tele <player name> [target name]
+
+  getOutOfBounds:
+    description: Tells you everyone who is out of bounds
+    usage: /getOutOfBounds
+
+  bestPVE:
+    description: Adds removes or lists players on the best PVE list
+    usage: /bestPVE [add | remove] [name]
+
+  forceStart:
+    description: Force starts the game
+    usage: forceStart
+
+  toggleEvent:
+    description: Toggles UHC event mode
+    usage: /toggleEvent
+
+# Clan Battle Commands
+  roster:
+    description: Modify the roster
+    usage: /roster [arguments]
