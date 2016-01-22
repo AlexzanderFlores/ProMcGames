@@ -15,6 +15,7 @@ import promcgames.server.util.ConfigurationUtil;
 
 public enum DB {
 	PLAYERS_ACCOUNTS("uuid VARCHAR(40), name VARCHAR(16), address VARCHAR(40), rank VARCHAR(20), PRIMARY KEY(uuid)"),
+	PLAYERS_ADDRESSES("id INT NOT NULL AUTO_INCREMENT, uuid VARCHAR(40), address VARCHAR(40), time VARCHAR(25), PRIMARY KEY(id)"),
 	PLAYERS_PLAY_TIME("uuid VARCHAR(40), play_time VARCHAR(25), PRIMARY KEY(uuid)"),
 	PLAYERS_MONTHLY_PLAY_TIME("id INT NOT NULL AUTO_INCREMENT, uuid VARCHAR(40), date VARCHAR(10), play_time VARCHAR(25), PRIMARY KEY(id)"),
 	PLAYERS_LOCATIONS("uuid VARCHAR(40), location VARCHAR(100), PRIMARY KEY(uuid)"),
