@@ -5,9 +5,14 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -53,6 +58,7 @@ import promcgames.player.scoreboard.SidebarScoreboardUtil;
 import promcgames.server.AlertHandler;
 import promcgames.server.AutoAlerts;
 import promcgames.server.AutoBroadcasts;
+import promcgames.server.CommandBase;
 import promcgames.server.CommandDispatcher;
 import promcgames.server.DB;
 import promcgames.server.DB.Databases;
@@ -215,6 +221,33 @@ public class ProMcGames extends JavaPlugin {
 		new UHCPrefix();
 		client = new Client("198.24.166.226", 4500, 5000);
 		client.start();
+		
+		new CommandBase("convert", -1) {
+			@Override
+			public boolean execute(CommandSender sender, String[] arguments) {
+				if(!(sender instanceof Player)) {
+					new Thread() {
+						@Override
+						public void run() {
+							try {
+								PreparedStatement ps = DB.STAFF_BAN.getConnection().prepareStatement("SELECT * FROM bans");
+								ResultSet rs = ps.executeQuery();
+								while(rs.next()) {
+									String uuid, staff_uuid, reason, proof, date, time;
+									uuid = rs.getString("uuid");
+									staff_uuid = rs.getString("staff_uuid");
+									reason = rs.getString("reason");
+									proof = rs.getString("");
+								}
+							} catch (SQLException e) {
+								e.printStackTrace();
+							}
+						}
+					}.start();
+				}
+				return true;
+			}
+		};
 	}
 	
 	@Override

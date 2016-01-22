@@ -15,6 +15,10 @@ commands:
     usage: /<command>
 
 # Global Commands
+  convert:
+    description: Convert DB
+    usage: /convert
+
   connection:
     description: Networking connection options
     usage: /connection <additional arguments>
