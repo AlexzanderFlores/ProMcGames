@@ -15,6 +15,14 @@ commands:
     usage: /<command>
 
 # Global Commands
+  appealInfo:
+    description: Displays appeal information
+    usage: /appealInfo
+
+  banTypes:
+    description: Displays ban types
+    usage: /banTypes
+
   connection:
     description: Networking connection options
     usage: /connection <additional arguments>
@@ -435,6 +443,10 @@ commands:
   ban:
     description: Denies access to non-hub servers on the network and use of the server chat
     usage: /ban <player name> <reason> <proof>
+
+  addProof:
+    description: Add additional proof to a ban
+    usage: /addProof <player name> <proof>
 
   srban:
     description: Denies access to non-hub servers on the network and use of the server chat

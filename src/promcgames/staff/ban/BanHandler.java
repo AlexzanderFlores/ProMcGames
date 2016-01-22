@@ -43,15 +43,7 @@ import promcgames.staff.Punishment;
 public class BanHandler extends Punishment {
 	private static List<String> checkedForBanned = null;
 	private static List<String> hasBeenBanned = null;
-	
-	public enum Violations {
-		HACKING,
-		XRAY,
-		BLACK_LISTED_MODS,
-		COMBAT_MACROS,
-		CHARGING_BACK,
-		EXPLOITING_BUGS
-	}
+	public enum Violations {HACKING, XRAY, BLACK_LISTED_MODS, COMBAT_MACROS, CHARGING_BACK, EXPLOITING_BUGS}
 	
 	public BanHandler() {
 		super("Banned");
@@ -106,14 +98,13 @@ public class BanHandler extends Punishment {
 						int id = DB.STAFF_BAN.getInt(keys, values, "id");
 						String proof = (arguments.length == 2 ? "none" : arguments[2]);
 						DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
-						//DB.STAFF_BAN.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + address + "', '" + reason.toString() + "', '" + proof + "', '" + time.substring(0, 7) + "', '" + time + "'");
 						// Perform any final execution instructions
 						MessageHandler.alert(message);
 						Bukkit.getPluginManager().callEvent(new PlayerBanEvent(uuid, sender));
 						// Execute the ban if the player is online
 						Player player = ProPlugin.getPlayer(arguments[0]);
 						if(player != null) {
-							//ProPlugin.sendPlayerToServer(player, "slave");
+							ProPlugin.sendPlayerToServer(player, "slave");
 							final String name = player.getName();
 							new DelayedTask(new Runnable() {
 								@Override
@@ -143,6 +134,28 @@ public class BanHandler extends Punishment {
 				return true;
 			}
 		}.setRequiredRank(Ranks.MODERATOR);
+		// Command syntax: /addProof <player name> <proof>
+		new CommandBase("addProof", 2) {
+			@Override
+			public boolean execute(CommandSender sender, String [] arguments) {
+				String name = arguments[0];
+				UUID uuid = AccountHandler.getUUID(name);
+				if(uuid == null) {
+					MessageHandler.sendMessage(sender, "&c" + name + " has never logged in before");
+				} else {
+					String [] keys = new String [] {"uuid", "active"};
+					String [] values = new String [] {uuid.toString(), "1"};
+					if(DB.STAFF_BAN.isKeySet(keys, values)) {
+						int id = DB.STAFF_BAN.getInt(keys, values, "id");
+						DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + arguments[1] + "'");
+						MessageHandler.sendMessage(sender, "Added &e" + arguments[1] + " &ato proof for the ban of " + name);
+					} else {
+						MessageHandler.sendMessage(sender, "&c" + name + " is not banned");
+					}
+				}
+				return true;
+			}
+		}.setRequiredRank(Ranks.MODERATOR);
 		// Command syntax: /SrBan <player name>
 		new CommandBase("SrBan", 1) {
 			@Override
@@ -167,20 +180,30 @@ public class BanHandler extends Punishment {
 						staffUUID = Disguise.getUUID(player).toString();
 					}
 					// Compile the message and proof strings
-					String message = getReason(AccountHandler.getRank(sender), arguments, "HACKING", result);
+					final String message = getReason(AccountHandler.getRank(sender), arguments, "HACKING", result);
 					String time = TimeUtil.getTime();
 					String date = time.substring(0, 7);
 					int day = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
 					DB.STAFF_BAN.insert("'" + uuid.toString() + "', 'null', '" + staffUUID + "', 'null', 'HACKING', '" + date + "', '" + time + "', 'null', 'null', '" + day + "', '1'");
-					//DB.STAFF_BANS.insert("'" + uuid.toString() + "', '" + staffUUID + "', '" + address + "', 'HACKING', 'Proof being uploaded soon', '" + time.substring(0, 7) + "', '" + time + "'");
 					// Perform any final execution instructions
 					MessageHandler.alert(message);
 					MessageHandler.sendMessage(sender, "&c&lYOU MUST UPLOAD PROOF AND REBAN");
 					Bukkit.getPluginManager().callEvent(new PlayerBanEvent(uuid, sender));
 					// Execute the ban if the player is online
+					// Execute the ban if the player is online
 					Player player = ProPlugin.getPlayer(arguments[0]);
 					if(player != null) {
-						player.kickPlayer(message);
+						ProPlugin.sendPlayerToServer(player, "slave");
+						final String name = player.getName();
+						new DelayedTask(new Runnable() {
+							@Override
+							public void run() {
+								Player player = ProPlugin.getPlayer(name);
+								if(player != null && player.isOnline()) {
+									player.kickPlayer(message);
+								}
+							}
+						}, 15);
 					}
 				}
 				return true;
@@ -210,39 +233,32 @@ public class BanHandler extends Punishment {
 				return true;
 			}
 		}.enableDelay(2);
-		new CommandBase("whoUnbanned", 1) {
+		new CommandBase("banTypes") {
 			@Override
-			public boolean execute(final CommandSender sender, final String [] arguments) {
-				new AsyncDelayedTask(new Runnable() {
-					@Override
-					public void run() {
-						String name = arguments[0];
-						UUID uuid = AccountHandler.getUUID(name);
-						if(uuid == null) {
-							MessageHandler.sendMessage(sender, "&c" + name + " has never logged in before");
-						} else {
-							String [] keys = new String [] {"uuid", "active"};
-							String [] values = new String [] {uuid.toString(), "0"};
-							if(DB.STAFF_BAN.isKeySet(keys, values)) {
-								int counter = 0;
-								for(String id : DB.STAFF_BAN.getAllStrings("id", "uuid", uuid.toString())) {
-									String time = DB.STAFF_BAN.getString("id", id, "unban_time");
-									String staffUUID = DB.STAFF_BAN.getString("id", id, "staff_uuid");
-									String staffName = staffUUID;
-									if(!staffUUID.equals("CONSOLE")) {
-										staffName = AccountHandler.getName(UUID.fromString(staffUUID));
-									}
-									MessageHandler.sendMessage(sender, "&c#" + ++counter + " &e" + name + " was unbanned at " + time + " by " + staffName);
-								}
-							} else {
-								MessageHandler.sendMessage(sender, "&c" + name + " has never been banned before");
-							}
-						}
-					}
-				});
+			public boolean execute(CommandSender sender, String [] arguments) {
+				MessageHandler.sendMessage(sender, "");
+				MessageHandler.sendMessage(sender, "&c&lDIRECT &a&lBans:");
+				MessageHandler.sendMessage(sender, "A direct ban is when the account banned was the account found builty of the violation.");
+				MessageHandler.sendMessage(sender, "");
+				MessageHandler.sendMessage(sender, "&c&lASSOCIATION &a&lBans:");
+				MessageHandler.sendMessage(sender, "An association ban is placed on all accounts that share an IP address with a &c&lDIRECTLY &abanned account. You must have &cVALID &areason to be unbanned and good proof to back up your reasoning. The likeyhood of one of these bans being lifted, without solid proof that it should NOT have happened, is very low.");
+				MessageHandler.sendMessage(sender, "");
 				return true;
 			}
-		}.enableDelay(2).setRequiredRank(Ranks.MODERATOR);
+		};
+		new CommandBase("appealInfo") {
+			@Override
+			public boolean execute(CommandSender sender, String [] arguments) {
+				MessageHandler.sendMessage(sender, "");
+				MessageHandler.sendMessage(sender, "&b&lX-Ray Bans (1st offence) &eAfter 30 days you may appeal and get unbanned even if your ban was valid");
+				MessageHandler.sendMessage(sender, "");
+				MessageHandler.sendMessage(sender, "&b&lAnti Cheat Bans via Console &eAfter 30 days you may appeal and get unbanned even if your ban was valid. Note that you &cMUST &eprovide as much detail as possible about what happened leading up to your ban. This is to help us improve our anti cheat.");
+				MessageHandler.sendMessage(sender, "");
+				MessageHandler.sendMessage(sender, "&b&lOther &eAny appeals for other ban types will &cONLY &eresult in an unban if the proof is invalid");
+				MessageHandler.sendMessage(sender, "");
+				return true;
+			}
+		};
 	}
 	
 	@EventHandler
@@ -354,11 +370,8 @@ public class BanHandler extends Punishment {
 							} else {
 								ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/banTypes", "&aType of ban? &eASSOCIATION");
 							}
-							MessageHandler.sendMessage(viewer, "");
 							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick to explain", "Click to explain", "/appealInfo", "&aSome ban types are only temporary bans");
-							MessageHandler.sendMessage(viewer, "");
 							ChatClickHandler.sendMessageToRunCommand(viewer, " &bClick here", "Click to appeal", "/appeal", "&aTo appeal your ban");
-							MessageHandler.sendMessage(viewer, "");
 							if(Ranks.SENIOR_MODERATOR.hasRank(viewer)) {
 								String staff = resultSet.getString("staff_uuid");
 								if(!staff.equals("CONSOLE")) {

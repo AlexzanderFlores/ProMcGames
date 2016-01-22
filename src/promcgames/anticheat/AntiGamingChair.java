@@ -143,8 +143,7 @@ public class AntiGamingChair {
 				String [] values = new String [] {playerUUID.toString(), "1"};
 				int id = DB.STAFF_BAN.getInt(keys, values, "id");
 				DB.STAFF_BAN_PROOF.insert("'" + id + "', '" + proof + "'");
-				//DB.STAFF_BANS.insert("'" + playerUUID.toString() + "', '" + uuid + "', '" + player.getAddress().getAddress().getHostAddress() + "', 'HACKING', '" + this.name + "-" + information + "', '" + time.substring(0, 7) + "', '" + time + "'");
-				//ProPlugin.sendPlayerToServer(player, "slave");
+				ProPlugin.sendPlayerToServer(player, "slave");
 				final String name = player.getName();
 				new DelayedTask(new Runnable() {
 					@Override
