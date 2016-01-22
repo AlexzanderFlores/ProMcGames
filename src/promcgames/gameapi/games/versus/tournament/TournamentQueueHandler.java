@@ -27,45 +27,33 @@ import promcgames.server.util.EventUtil;
 public class TournamentQueueHandler implements Listener {
 	
 	private static TournamentQueueHandler instance = null;
-	private static List<String> queue = null;
-	private static List<String> delayed = null;
-	private static boolean queueEnabled = false;
-	private static boolean countdownRunning = false;
+	private List<String> queue = null;
+	private List<String> delayed = null;
+	private boolean queueEnabled = false;
+	private boolean countdownRunning = false;
 	private static boolean commandsRegistered = false;
 	private static boolean npcsRegistered = false;
 	private static final boolean construction = true;
-	private static int countdown = 0;
-	private static final int minPlayers = 1;
-	private static final int startPlayers = 2;
+	private int countdown = 0;
+	private final int minPlayers = 1;
+	private final int startPlayers = 2;
 	
 	public TournamentQueueHandler() {
-		if(instance != null) {
-			HandlerList.unregisterAll(instance);
-		}
-		instance = this;
-		queueEnabled = false;
-		countdownRunning = false;
-		countdown = 0;
-		if(queue != null) {
-			queue.clear();
-		} else {
+		if(instance == null) {
+			instance = this;
 			queue = new ArrayList<>();
-		}
-		if(delayed != null) {
-			delayed.clear();
-		} else {
 			delayed = new ArrayList<>();
-		}
-		if(!commandsRegistered) {
-			commandsRegistered = true;
-			registerCommands();
-		}
-		if(!npcsRegistered) {
-			npcsRegistered = true;
-			registerNPCs();
-		}
-		if(!construction) {
-			EventUtil.register(this);
+			if(!commandsRegistered) {
+				commandsRegistered = true;
+				registerCommands();
+			}
+			if(!npcsRegistered) {
+				npcsRegistered = true;
+				registerNPCs();
+			}
+			if(!construction) {
+				EventUtil.register(this);
+			}
 		}
 	}
 	
@@ -118,33 +106,34 @@ public class TournamentQueueHandler implements Listener {
 		new NPCEntity(EntityType.SKELETON, "&bTournament", new Location(Bukkit.getWorlds().get(0), -3.5, 5, 11.5, -180.0f, 0.0f)) {
 			@Override
 			public void onInteract(Player player) {
+				final TournamentQueueHandler instance = getInstance();
 				if(construction) {
 					MessageHandler.sendMessage(player, "&cComing soon");
 				} else if(VersusTournament.getEnabled()) {
 					MessageHandler.sendMessage(player, "&cA versus tournament is already in progress");
-				} else if(queueEnabled) {
+				} else if(instance.queueEnabled) {
 					final String playerName = player.getName();
-					if(!delayed.contains(playerName)) {
-						delayed.add(playerName);
+					if(!instance.delayed.contains(playerName)) {
+						instance.delayed.add(playerName);
 						new DelayedTask(new Runnable() {
 							@Override
 							public void run() {
-								delayed.remove(playerName);
+								instance.delayed.remove(playerName);
 							}
 						}, 20L);
-						if(queue.contains(playerName)) {
-							queue.remove(playerName);
+						if(instance.queue.contains(playerName)) {
+							instance.queue.remove(playerName);
 							MessageHandler.sendMessage(player, "You have been removed from the queue");
 						} else if(SpectatorHandler.contains(player)) {
 							MessageHandler.sendMessage(player, "&cYou can't queue as a spectator");
 						} else {
-							queue.add(playerName);
+							instance.queue.add(playerName);
 							MessageHandler.sendMessage(player, "You have been added to the queue");
 							MessageHandler.sendMessage(player, "The tournament will begin soon");
 							MessageHandler.sendMessage(player, "To leave the queue, click the NPC again");
-							if(queue.size() >= startPlayers && !countdownRunning) {
-								countdown = 600;
-								countdownRunning = true;
+							if(instance.queue.size() >= instance.startPlayers && !instance.countdownRunning) {
+								instance.countdown = 600;
+								instance.countdownRunning = true;
 							}
 						}
 					}
@@ -167,6 +156,7 @@ public class TournamentQueueHandler implements Listener {
 						return true;
 					}
 				}
+				final TournamentQueueHandler instance = getInstance();
 				if(arguments.length == 0 || arguments[0].equalsIgnoreCase("help")) {
 					MessageHandler.sendMessage(sender, "&b/queue start &eAllow players to start queueing up");
 					MessageHandler.sendMessage(sender, "&b/queue stop &eClear queue and stop players from queueing up");
@@ -174,20 +164,20 @@ public class TournamentQueueHandler implements Listener {
 					MessageHandler.sendMessage(sender, "&b/queue startTimer [seconds] &eStarts the timer");
 					MessageHandler.sendMessage(sender, "&b/queue stopTimer &eStops the timer");
 				} else if(arguments[0].equalsIgnoreCase("start")) {
-					setQueueEnabled(true);
+					instance.setQueueEnabled(true);
 					MessageHandler.alert("A versus tournament is now available to join");
 					MessageHandler.alert("Click the &bTournament Skeleton &ain the versus lobby to join");
 				} else if(arguments[0].equalsIgnoreCase("stop")) {
-					setQueueEnabled(false);
-					queue.clear();
-					countdownRunning = true;
+					instance.setQueueEnabled(false);
+					instance.queue.clear();
+					instance.countdownRunning = true;
 					MessageHandler.sendMessage(sender, "Versus tournament queue has been cleared and stopped");
 					MessageHandler.alert("The versus tournament has been cancelled");
 				} else if(arguments[0].equalsIgnoreCase("list")) {
-					MessageHandler.sendMessage(sender, "Queue size: " + queue.size());
+					MessageHandler.sendMessage(sender, "Queue size: " + instance.queue.size());
 					String message = "Players: ";
-					for(String playerName : queue) {
-						message += playerName + (playerName.equals(queue.get(queue.size() - 1)) ? "" : ", ");
+					for(String playerName : instance.queue) {
+						message += playerName + (playerName.equals(instance.queue.get(instance.queue.size() - 1)) ? "" : ", ");
 					}
 					MessageHandler.sendMessage(sender, message);
 				} else if(arguments[0].equalsIgnoreCase("startTimer")) {
@@ -199,17 +189,17 @@ public class TournamentQueueHandler implements Listener {
 							MessageHandler.sendMessage(sender, "&cIncorrect usage &e/queue startTimer [seconds]");
 							return true;
 						}
-						countdown = seconds;
-						countdownRunning = true;
+						instance.countdown = seconds;
+						instance.countdownRunning = true;
 						MessageHandler.sendMessage(sender, "Counter started at &b" + seconds + " seconds");
 					} else if(arguments.length == 1) {
-						countdownRunning = true;
+						instance.countdownRunning = true;
 						MessageHandler.sendMessage(sender, "The countdown has been resumed");
 					} else {
 						MessageHandler.sendMessage(sender, "&cIncorrect usage &e/queue startTimer [seconds]");
 					}
 				} else if(arguments[0].equalsIgnoreCase("stopTimer")) {
-					countdownRunning = false;
+					instance.countdownRunning = false;
 					MessageHandler.sendMessage(sender, "The countdown has been halted");
 				} else {
 					MessageHandler.sendMessage(sender, "&cInvalid arguments &e/queue help");
@@ -232,15 +222,15 @@ public class TournamentQueueHandler implements Listener {
 				} else if(arguments[0].equalsIgnoreCase("start")) {
 					if(VersusTournament.getEnabled()) {
 						MessageHandler.sendMessage(sender, "&cA versus tournament is already in progress");
-					} else if(queue.size() >= 8) {
+					} else if(instance.queue.size() >= 8) {
 						MessageHandler.sendMessage(sender, "&cThere must be at least &b8 &cpeople in the queue before starting the tournament");
 					} else {
 						new VersusTournament();
-						queue.clear();
-						delayed.clear();
-						queueEnabled = false;
-						countdownRunning = false;
-						countdown = 0;
+						instance.queue.clear();
+						instance.delayed.clear();
+						instance.queueEnabled = false;
+						instance.countdownRunning = false;
+						instance.countdown = 0;
 						MessageHandler.sendMessage(sender, "A new versus tournament has begun");
 					}
 				} else {
@@ -251,20 +241,29 @@ public class TournamentQueueHandler implements Listener {
 		};
 	}
 	
-	public static void unregisterListener() {
-		HandlerList.unregisterAll(instance);
+	public void disable() {
+		HandlerList.unregisterAll(this);
+		queue.clear();
+		queue = null;
+		delayed.clear();
+		delayed = null;
+		instance = null;
 	}
 	
-	public static void setQueueEnabled(boolean queueEnabled) {
-		TournamentQueueHandler.queueEnabled = queueEnabled;
+	public void setQueueEnabled(boolean queueEnabled) {
+		this.queueEnabled = queueEnabled;
 	}
 	
-	public static List<String> getQueue() {
+	public List<String> getQueue() {
 		return queue;
 	}
 	
-	public static boolean getQueueEnabled() {
+	public boolean getQueueEnabled() {
 		return queueEnabled;
+	}
+	
+	public static TournamentQueueHandler getInstance() {
+		return instance;
 	}
 	
 }

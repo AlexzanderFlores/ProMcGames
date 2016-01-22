@@ -43,11 +43,11 @@ public class PrivateBattleHandler implements Listener {
 			public boolean execute(CommandSender sender, String [] arguments) {
 				Player clicker = (Player) sender;
 				Player clicked = ProPlugin.getPlayer(arguments[0]);
-				if(TournamentQueueHandler.getQueue().contains(clicker.getName())) {
+				if(TournamentQueueHandler.getInstance().getQueue().contains(clicker.getName())) {
 					MessageHandler.sendMessage(clicker, "&cYou can't 1v1 people whilst in a tournament queue");
 				} else if(clicked == null) {
 					MessageHandler.sendMessage(clicker, "&c" + arguments[0] + " is not online");
-				} else if(TournamentQueueHandler.getQueue().contains(clicked.getName())) {
+				} else if(TournamentQueueHandler.getInstance().getQueue().contains(clicked.getName())) {
 					MessageHandler.sendMessage(clicker, AccountHandler.getPrefix(clicker) + " &cis in a tournament queue and can't 1v1");
 				} else if(clicker.getInventory().contains(Material.MAGMA_CREAM)) {
 					MessageHandler.sendMessage(clicker, "&cCannot send request: You have your battle requests disabled");

@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
 import promcgames.customevents.timed.OneMinuteTaskEvent;
@@ -13,8 +14,13 @@ import promcgames.server.util.EventUtil;
 
 public class TournamentAutoStarter implements Listener {
 	
+	private static TournamentAutoStarter instance = null;
+	
 	public TournamentAutoStarter() {
-		EventUtil.register(this);
+		if(instance == null) {
+			instance = this;
+			EventUtil.register(this);
+		}
 	}
 	
 	@EventHandler
@@ -27,9 +33,15 @@ public class TournamentAutoStarter implements Listener {
 				} else {
 					DB.NETWORK_VERSUS_TOURNAMENT_WINS.insert("'NULL', '" + date + "'");
 					Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "queue start");
+					disable();
 				}
 			}
 		}
+	}
+	
+	public void disable() {
+		HandlerList.unregisterAll(this);
+		instance = null;
 	}
 	
 	private static int getHourOfDay() {
@@ -41,6 +53,10 @@ public class TournamentAutoStarter implements Listener {
 		int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		return month + "/" + day + "/" + year;
+	}
+	
+	public static TournamentAutoStarter getInstance() {
+		return instance;
 	}
 	
 }

@@ -74,7 +74,7 @@ public class LobbyHandler implements Listener {
 		kit = (Zombie) new NPCEntity(EntityType.ZOMBIE, "&cRandom Kit Battle", new Location(world, 0.5, 5, 11.5, -180.0f, 0.0f)) {
 			@Override
 			public void onInteract(Player player) {
-				if(!TournamentQueueHandler.getQueue().contains(player.getName())) {
+				if(!TournamentQueueHandler.getInstance().getQueue().contains(player.getName())) {
 					openKitSelection(player);
 				} else {
 					MessageHandler.sendMessage(player, "&cYou can't 1v1 whilst in a tournament queue");
@@ -292,7 +292,7 @@ public class LobbyHandler implements Listener {
 		if(isInLobby(player)) {
 			ItemStack item = player.getItemInHand();
 			if(item.equals(kitSelector)) {
-				if(TournamentQueueHandler.getQueue().contains(player.getName())) {
+				if(TournamentQueueHandler.getInstance().getQueue().contains(player.getName())) {
 					MessageHandler.sendMessage(player, "&cYou can't 1v1 people whilst in a tournament queue");
 				} else {
 					openKitSelection(player);

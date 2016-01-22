@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
@@ -25,10 +26,10 @@ import promcgames.server.util.ItemCreator;
 
 public class KitVoter implements Listener {
 	
-	private static List<VersusKit> kits = null;
-	private static List<KitVote> votes = null;
-	private static List<String> watching = null;
 	private static KitVoter instance = null;
+	private List<VersusKit> kits = null;
+	private List<KitVote> votes = null;
+	private List<String> watching = null;
 	private static String inventoryName = null;
 	private static ItemStack item = null;
 	
@@ -73,7 +74,7 @@ public class KitVoter implements Listener {
 	@EventHandler
 	public void onMouseClick(MouseClickEvent event) {
 		Player player = event.getPlayer();
-		if(TournamentQueueHandler.getQueue().contains(player.getName()) && player.getItemInHand() != null && player.getItemInHand().getType() == Material.NETHER_STAR) {
+		if(TournamentQueueHandler.getInstance().getQueue().contains(player.getName()) && player.getItemInHand() != null && player.getItemInHand().getType() == Material.NETHER_STAR) {
 			Inventory inv = Bukkit.createInventory(player, 18, inventoryName);
 			KitVote vote = getKitVote(player);
 			VersusKit votedKit = null;
@@ -95,7 +96,7 @@ public class KitVoter implements Listener {
 	@EventHandler
 	public void onInventoryItemClick(InventoryItemClickEvent event) {
 		Player player = event.getPlayer();
-		if(TournamentQueueHandler.getQueue().contains(player.getName()) && event.getTitle().equals(inventoryName)) {
+		if(TournamentQueueHandler.getInstance().getQueue().contains(player.getName()) && event.getTitle().equals(inventoryName)) {
 			VersusKit kit = kits.get(event.getSlot());
 			KitVote vote = getKitVote(player);
 			if(vote != null && vote.getKit() == kit) {
@@ -103,9 +104,9 @@ public class KitVoter implements Listener {
 			} else {
 				int votes = Ranks.getVotes(player);
 				if(vote != null) {
-					KitVoter.votes.remove(vote);
+					instance.votes.remove(vote);
 				}
-				KitVoter.votes.add(new KitVote(player.getName(), kit, votes));
+				instance.votes.add(new KitVote(player.getName(), kit, votes));
 				MessageHandler.sendMessage(player, "Voted for the &b" + kit.getName() + " &akit");
 			}
 		}
@@ -145,7 +146,18 @@ public class KitVoter implements Listener {
 		}
 	}
 	
-	public static void addKits() {
+	public void disable() {
+		HandlerList.unregisterAll(this);
+		kits.clear();
+		votes.clear();
+		watching.clear();
+		kits = null;
+		votes = null;
+		watching = null;
+		instance = null;
+	}
+	
+	public void addKits() {
 		if(kits == null) {
 			kits = new ArrayList<>();
 		} else {
@@ -159,7 +171,7 @@ public class KitVoter implements Listener {
 		}
 	}
 	
-	public static int getVotesForKit(VersusKit kit) {
+	public int getVotesForKit(VersusKit kit) {
 		int total = 0;
 		for(KitVote vote : votes) {
 			if(vote.getKit() == kit) {
@@ -169,7 +181,7 @@ public class KitVoter implements Listener {
 		return total;
 	}
 	
-	public static KitVote getKitVote(Player player) {
+	public KitVote getKitVote(Player player) {
 		for(KitVote vote : votes) {
 			if(vote.getPlayerName().equalsIgnoreCase(player.getName())) {
 				return vote;
@@ -178,16 +190,20 @@ public class KitVoter implements Listener {
 		return null;
 	}
 	
-	public static List<VersusKit> getKits() {
+	public List<VersusKit> getKits() {
 		return kits;
 	}
 	
-	public static List<KitVote> getVotes() {
+	public List<KitVote> getVotes() {
 		return votes;
 	}
 	
 	public static ItemStack getItem() {
 		return item;
+	}
+	
+	public static KitVoter getInstance() {
+		return instance;
 	}
 	
 }

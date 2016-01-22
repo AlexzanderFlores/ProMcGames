@@ -25,15 +25,16 @@ public class VersusTournament implements Listener {
 		if(instance == null) {
 			instance = this;
 			EventUtil.register(this);
-			new Tournament(TournamentQueueHandler.getQueue());
+			new Tournament(TournamentQueueHandler.getInstance().getQueue());
+			TournamentQueueHandler.getInstance().disable();
 		}
 	}
 	
 	@EventHandler
 	public void onTournamentRoundStart(TournamentRoundStartEvent event) {
-		List<String> notPlaying = Tournament.getTournament().getNotPlaying();
-		List<String> players = Tournament.getTournament().getPlayers();
-		List<Matchup> currentMatchups = Tournament.getTournament().getCurrentMatchups();
+		List<String> notPlaying = Tournament.getInstance().getNotPlaying();
+		List<String> players = Tournament.getInstance().getPlayers();
+		List<Matchup> currentMatchups = Tournament.getInstance().getCurrentMatchups();
 		
 		Iterator<Matchup> it = currentMatchups.iterator();
 		
@@ -60,7 +61,7 @@ public class VersusTournament implements Listener {
 			}
 		}
 		while(notPlaying.size() >= 2) {
-			Tournament.getTournament().setNotPlayingMatchups();
+			Tournament.getInstance().setNotPlayingMatchups();
 			it = currentMatchups.iterator();
 			while(it.hasNext()) {
 				Matchup matchup = it.next();
@@ -90,7 +91,7 @@ public class VersusTournament implements Listener {
 			String playerName = notPlaying.get(0);
 			Player player = ProPlugin.getPlayer(playerName);
 			if(player != null) {
-				player.teleport(Tournament.getTournament().getWaitingLocation());
+				player.teleport(Tournament.getInstance().getWaitingLocation());
 				MessageHandler.sendMessage(player, "You will wait this round out");
 			} else {
 				notPlaying.remove(playerName);
@@ -99,13 +100,17 @@ public class VersusTournament implements Listener {
 		}
 	}
 	
-	public static void disable() {
-		HandlerList.unregisterAll(instance);
+	public void disable() {
+		HandlerList.unregisterAll(this);
 		instance = null;
 	}
 	
 	public static boolean getEnabled() {
 		return instance != null;
+	}
+	
+	public static VersusTournament getInstance() {
+		return instance;
 	}
 	
 }

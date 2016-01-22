@@ -28,7 +28,7 @@ import promcgames.server.tasks.DelayedTask;
  */
 public class Tournament {
 	
-	private static Tournament tournament = null;
+	private static Tournament instance = null;
 	public static enum TournamentStatus {ONGOING_ROUND, INBETWEEN_ROUND, ENDING};
 	private TournamentStatus tournamentStatus = null;
 	private List<Matchup> currentMatchups = null;
@@ -94,8 +94,8 @@ public class Tournament {
 	}
 	
 	public Tournament(List<String> players) {
-		if(tournament == null) {
-			tournament = this;
+		if(instance == null) {
+			instance = this;
 			this.players = players;
 			this.notPlaying = new ArrayList<String>();
 			this.currentMatchups = new ArrayList<Matchup>();
@@ -191,10 +191,10 @@ public class Tournament {
 	
 	public void disable() {
 		HandlerList.unregisterAll(events);
-		for(String s : Tournament.getTournament().getPlayers()) {
+		for(String s : getPlayers()) {
 			Player player = ProPlugin.getPlayer(s);
 			if(player != null) {
-				player.teleport(Tournament.getTournament().getRespawnLocation());
+				player.teleport(getRespawnLocation());
 			}
 		}
 		currentMatchups.clear();
@@ -203,7 +203,7 @@ public class Tournament {
 		players = null;
 		respawnLocation = null;
 		waitingLocation = null;
-		tournament = null;
+		instance = null;
 	}
 	
 	public void callWinEvent(Player winner) {
@@ -416,8 +416,8 @@ public class Tournament {
 		return null;
 	}
 	
-	public static Tournament getTournament() {
-		return tournament;
+	public static Tournament getInstance() {
+		return instance;
 	}
 	
 }
