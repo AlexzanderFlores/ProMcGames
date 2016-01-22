@@ -10,8 +10,10 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
 import promcgames.ProPlugin;
+import promcgames.customevents.tournament.TournamentEndEvent;
 import promcgames.customevents.tournament.TournamentRoundStartEvent;
 import promcgames.gameapi.games.versus.MapProvider;
+import promcgames.gameapi.games.versus.kits.VersusKit;
 import promcgames.gameapi.tournament.Tournament;
 import promcgames.gameapi.tournament.Tournament.Matchup;
 import promcgames.player.MessageHandler;
@@ -20,6 +22,7 @@ import promcgames.server.util.EventUtil;
 public class VersusTournament implements Listener {
 	
 	private static VersusTournament instance = null;
+	private VersusKit kit = null;
 	
 	public VersusTournament() {
 		if(instance == null) {
@@ -32,6 +35,10 @@ public class VersusTournament implements Listener {
 	
 	@EventHandler
 	public void onTournamentRoundStart(TournamentRoundStartEvent event) {
+		if(kit == null) {
+			KitVoter.getInstance().chooseWinningKit();
+		}
+		
 		List<String> notPlaying = Tournament.getInstance().getNotPlaying();
 		List<String> players = Tournament.getInstance().getPlayers();
 		List<Matchup> currentMatchups = Tournament.getInstance().getCurrentMatchups();
@@ -100,9 +107,22 @@ public class VersusTournament implements Listener {
 		}
 	}
 	
+	@EventHandler
+	public void onTournamentEnd(TournamentEndEvent event) {
+		disable();
+	}
+	
 	public void disable() {
 		HandlerList.unregisterAll(this);
 		instance = null;
+	}
+	
+	public void setKit(VersusKit kit) {
+		this.kit = kit;
+	}
+	
+	public VersusKit getKit() {
+		return kit;
 	}
 	
 	public static boolean getEnabled() {

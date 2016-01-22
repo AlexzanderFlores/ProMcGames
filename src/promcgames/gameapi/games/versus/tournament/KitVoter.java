@@ -2,6 +2,7 @@ package promcgames.gameapi.games.versus.tournament;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -169,6 +170,32 @@ public class KitVoter implements Listener {
 				kits.add(kit);
 			}
 		}
+	}
+	
+	public void chooseWinningKit() {
+		List<VersusKit> winning = new ArrayList<>();
+		int winningVotes = 0;
+		for(VersusKit kit : kits) {
+			int votes = getVotesForKit(kit);
+			if(votes > winningVotes) {
+				winning.clear();
+				winning.add(kit);
+				winningVotes = votes;
+			} else if(votes == winningVotes) {
+				winning.add(kit);
+			}
+		}
+		VersusKit winningKit = null;
+		if(winning.size() == 1) {
+			winningKit = winning.get(0);
+		} else if(winning.size() >= 2) {
+			winningKit = winning.get(new Random().nextInt(winning.size()));
+		} else {
+			winningKit = kits.get(new Random().nextInt(kits.size()));
+		}
+		VersusTournament.getInstance().setKit(winningKit);
+		MessageHandler.alert("The &b" + winningKit.getName() + " &akit won with &b" + winningVotes + " votes");
+		disable();
 	}
 	
 	public int getVotesForKit(VersusKit kit) {

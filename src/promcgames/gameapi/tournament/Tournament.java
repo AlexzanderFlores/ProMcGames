@@ -267,6 +267,12 @@ public class Tournament {
 	
 	public void eliminatePlayer(Player player, Player killer) {
 		if(isPlayerInTournament(player)) {
+			if(killer == null) {
+				Matchup matchup = getMatchup(player);
+				if(matchup != null) {
+					killer = matchup.getOtherPlayer(player);
+				}
+			}
 			if(killer != null && isPlayerInTournament(killer)) {
 				killer.teleport(waitingLocation);
 			}

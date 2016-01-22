@@ -35,7 +35,7 @@ public class TournamentQueueHandler implements Listener {
 	private static boolean npcsRegistered = false;
 	private static final boolean construction = true;
 	private int countdown = 0;
-	private final int minPlayers = 1;
+	private final int stopPlayers = 1;
 	private final int startPlayers = 2;
 	
 	public TournamentQueueHandler() {
@@ -60,7 +60,7 @@ public class TournamentQueueHandler implements Listener {
 	@EventHandler
 	public void onPlayerLeave(PlayerLeaveEvent event) {
 		queue.remove(event.getPlayer().getName());
-		if(queue.size() <= 1 && countdownRunning) {
+		if(queue.size() <= stopPlayers && countdownRunning) {
 			countdownRunning = false;
 			MessageHandler.alert("Versus tournament countdown cancelled due to too little players");
 		}
@@ -78,7 +78,7 @@ public class TournamentQueueHandler implements Listener {
 	@EventHandler
 	public void onOneSecondTask(OneSecondTaskEvent event) {
 		if(countdownRunning) {
-			if(queue.size() <= minPlayers && countdownRunning) {
+			if(queue.size() <= stopPlayers && countdownRunning) {
 				countdownRunning = false;
 				MessageHandler.alert("Versus tournament countdown cancelled due to too little players");
 			}
