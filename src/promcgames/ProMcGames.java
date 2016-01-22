@@ -5,14 +5,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -43,7 +38,6 @@ import promcgames.player.Disguise;
 import promcgames.player.EmeraldsHandler;
 import promcgames.player.Friends;
 import promcgames.player.IgnoreHandler;
-import promcgames.player.MessageHandler;
 import promcgames.player.NameColor;
 import promcgames.player.Particles;
 import promcgames.player.PartyHandler;
@@ -59,7 +53,6 @@ import promcgames.player.scoreboard.SidebarScoreboardUtil;
 import promcgames.server.AlertHandler;
 import promcgames.server.AutoAlerts;
 import promcgames.server.AutoBroadcasts;
-import promcgames.server.CommandBase;
 import promcgames.server.CommandDispatcher;
 import promcgames.server.DB;
 import promcgames.server.DB.Databases;
@@ -222,71 +215,6 @@ public class ProMcGames extends JavaPlugin {
 		new UHCPrefix();
 		client = new Client("198.24.166.226", 4500, 5000);
 		client.start();
-		
-		new CommandBase("convert", -1) {
-			@Override
-			public boolean execute(CommandSender sender, String[] arguments) {
-				if(!(sender instanceof Player)) {
-					if(arguments.length != 1) {
-						MessageHandler.sendMessage(sender, "wow u suck");
-						return true;
-					}
-					if(arguments[0].equalsIgnoreCase("bans")) {
-						new Thread() {
-							@Override
-							public void run() {
-								System.out.println("Process began");
-								try {
-									PreparedStatement ps = DB.STAFF_BAN.getConnection().prepareStatement("SELECT * FROM bans");
-									ResultSet rs = ps.executeQuery();
-									int ban_id = 1;
-									while(rs.next()) {
-										String uuid, staff_uuid, reason, date, time, proof;
-										uuid = rs.getString("uuid");
-										staff_uuid = rs.getString("staff_uuid");
-										reason = rs.getString("reason");
-										date = rs.getString("date");
-										time = rs.getString("time");
-										DB.STAFF_BAN.getConnection().prepareStatement("INSERT INTO ban (`uuid`, `staff_uuid`, `reason`, `date`, `time`, `day`, `active`, `who_unbanned`, `unban_date`, `unban_time`, `attached_uuid`) VALUES ('" + uuid + "', '" + staff_uuid + "', '" + reason + "', '" + date + "', '" + time + "', '30', '1', 'null', 'null', 'null', 'null')").executeQuery();
-										
-										proof = rs.getString("proof");
-										DB.STAFF_BAN_PROOF.insert("'" + ban_id + "', '" + proof + "'");
-										ban_id++;
-									}
-								} catch (SQLException e) {
-									e.printStackTrace();
-								}
-								System.out.println("bans done SWAG YOLO 420 YOLOYOLOYOLOYOLO");
-							}
-						}.start();
-					} else {
-						new Thread() {
-							@Override
-							public void run() {
-								System.out.println("Process began");
-								try {
-									PreparedStatement ps = DB.STAFF_BAN.getConnection().prepareStatement("SELECT * FROM unbans");
-									ResultSet rs = ps.executeQuery();
-									while(rs.next()) {
-										String uuid, who_unbanned, unban_date, unban_time;
-										uuid = rs.getString("uuid");
-										who_unbanned = rs.getString("staff_uuid");
-										unban_date = rs.getString("date");
-										unban_time = rs.getString("time");
-										DB.STAFF_BAN.getConnection().prepareStatement("INSERT INTO ban (`uuid`, `who_unbanned`, `unban_date`, `unban_time`, `day`, `active`, `attached_uuid`, `staff_uuid`, `reason`, `date`, `time`) "
-												+ "VALUES ('" + uuid + "', '" + who_unbanned + "', '" + unban_date + "', '" + unban_time + "', '0', '0', 'null', 'null', 'null', 'null', 'null')").executeQuery();
-									}
-								} catch (SQLException e) {
-									e.printStackTrace();
-								}
-								System.out.println("unbans done SWAG YOLO 420 YOLOYOLOYOLOYOLO");
-							}
-						}.start();
-					}
-				}
-				return true;
-			}
-		};
 	}
 	
 	@Override
