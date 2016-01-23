@@ -63,8 +63,10 @@ public class VersusTournament implements Listener {
 				players.remove(matchup.getPlayerTwoName());
 			} else {
 				matchup.setFighting(true);
-				//new MapProvider(playerOne, playerTwo, Bukkit.getWorlds().get(0), true, true);
-				Bukkit.getLogger().info(playerOne.getName() + " will be fighting " + playerTwo.getName());
+				kit.give(playerOne, false);
+				kit.give(playerTwo, false);
+				new MapProvider(playerOne, playerTwo, Bukkit.getWorlds().get(0), true, true);
+				//Bukkit.getLogger().info(playerOne.getName() + " will be fighting " + playerTwo.getName());
 			}
 		}
 		while(notPlaying.size() >= 2) {

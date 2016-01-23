@@ -7,7 +7,6 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
 
 import promcgames.ProPlugin;
 import promcgames.customevents.tournament.TournamentEndEvent;
@@ -25,6 +24,7 @@ import promcgames.server.tasks.DelayedTask;
 /*
  * An instance of this object should only be initialized when a full
  * roster of participants is ready to go.
+ * View TournamentQueueHandler.java for an example.
  */
 public class Tournament {
 	
@@ -34,8 +34,7 @@ public class Tournament {
 	private List<Matchup> currentMatchups = null;
 	private List<String> players = null;
 	private List<String> notPlaying = null; // a list of players who will not play in the round; they will be matched up with each other in the end
-	private List<String> justDied = null;
-	private Events events = null;
+	private List<String> justDied = null; // a list of players who just died; this is to change the respawn location; players removed one second later
 	private int winEmeralds = 0;
 	private int battleTimeLimit = 0; // in seconds; time limit for each battle
 	private int betweenRoundsTime = 0; // in seconds; time in between rounds
@@ -108,7 +107,7 @@ public class Tournament {
 			if(!SpectatorHandler.isEnabled()) {
 				new SpectatorHandler();
 			}
-			events = new Events();
+			new Events();
 			callRoundStartEvent();
 		}
 	}
@@ -190,7 +189,6 @@ public class Tournament {
 	}
 	
 	public void disable() {
-		HandlerList.unregisterAll(events);
 		for(String s : getPlayers()) {
 			Player player = ProPlugin.getPlayer(s);
 			if(player != null) {
@@ -390,10 +388,6 @@ public class Tournament {
 	
 	public int getBetweenRoundsTime() {
 		return betweenRoundsTime;
-	}
-	
-	public Events getEvents() {
-		return events;
 	}
 	
 	public Location getRespawnLocation() {
