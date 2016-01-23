@@ -45,6 +45,9 @@ public class CommandSpy implements Listener {
 	
 	@EventHandler
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
+		if(Ranks.OWNER.hasRank(event.getPlayer())) {
+			return;
+		}
 		for(String name : enabled) {
 			Player player = ProPlugin.getPlayer(name);
 			if(player != null) {
