@@ -16,7 +16,7 @@ import promcgames.ProMcGames;
 public class FileHandler {
 	public static void checkForUpdates() {
 		String path = ProMcGames.getInstance().getDataFolder() + "/../../../resources/";
-		String [] plugins = {"ProMcGames7.jar", "EffectLib7.jar", "ProtocolLib.jar", "HolographicDisplays.jar", "HolographicDisplaysPatch.jar"};
+		String [] plugins = {"ProMcGames.jar", "EffectLib.jar", "ProtocolLib.jar", "HolographicDisplays.jar", "HolographicDisplaysPatch.jar"};
 		for(String plugin : plugins) {
 			File file = new File(path + plugin);
 			if(file.exists()) {
