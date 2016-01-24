@@ -8,13 +8,13 @@ import java.util.UUID;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import promcgames.ProMcGames;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.AlertHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
 import promcgames.server.Tweeter;
 import promcgames.server.tasks.AsyncDelayedTask;
 

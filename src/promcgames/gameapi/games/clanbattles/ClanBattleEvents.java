@@ -14,6 +14,8 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.scoreboard.Team;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.game.GameKillEvent;
 import promcgames.customevents.game.GameStartingEvent;
@@ -26,8 +28,6 @@ import promcgames.gameapi.games.clanbattles.setup.ClanBattleSetup;
 import promcgames.gameapi.games.survivalgames.Events;
 import promcgames.player.MessageHandler;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.clans.Clan;
 import promcgames.server.servers.clans.ClanHandler;
 import promcgames.server.util.EventUtil;

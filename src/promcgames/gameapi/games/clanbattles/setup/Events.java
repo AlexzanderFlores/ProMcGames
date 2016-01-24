@@ -10,6 +10,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.ServerRestartEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
@@ -18,8 +20,6 @@ import promcgames.gameapi.games.clanbattles.setup.ClanBattleSetup.SetupPhase;
 import promcgames.player.MessageHandler;
 import promcgames.player.bossbar.BossBar;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.clans.Clan;
 import promcgames.server.servers.clans.ClanHandler;
 import promcgames.server.servers.clans.ClanHandler.ClanRank;

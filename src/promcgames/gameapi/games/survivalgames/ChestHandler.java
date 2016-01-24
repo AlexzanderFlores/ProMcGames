@@ -22,12 +22,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.games.survivalgames.events.RestockChestEvent;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.player.MessageHandler;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;

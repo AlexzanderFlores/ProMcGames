@@ -51,6 +51,8 @@ import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.game.GameEndingEvent;
 import promcgames.customevents.game.GameKillEvent;
@@ -81,8 +83,6 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.bossbar.BossBar;
 import promcgames.server.AlertHandler;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;

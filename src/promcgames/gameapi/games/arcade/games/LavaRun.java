@@ -20,6 +20,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.game.PlayerExpFillEvent_;
 import promcgames.customevents.timed.FiveTickTaskEvent;
@@ -33,8 +35,6 @@ import promcgames.gameapi.games.arcade.ArcadeGame;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 
 @SuppressWarnings("deprecation")
 public class LavaRun extends ArcadeGame {

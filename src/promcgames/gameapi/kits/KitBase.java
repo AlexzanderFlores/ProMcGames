@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.PlayerKitPurchaseEvent;
 import promcgames.customevents.player.PlayerKitSelectEvent;
 import promcgames.customevents.player.SpecialKitDenyEvent;
@@ -21,8 +23,6 @@ import promcgames.player.EmeraldsHandler.EmeraldReason;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.ItemCreator;
 import promcgames.server.util.TimeUtil;

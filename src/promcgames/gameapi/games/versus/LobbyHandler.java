@@ -30,6 +30,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerAFKEvent;
@@ -42,7 +43,6 @@ import promcgames.gameapi.games.versus.tournament.TournamentQueueHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.trophies.VersusTrophies;
-import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EffectUtil;

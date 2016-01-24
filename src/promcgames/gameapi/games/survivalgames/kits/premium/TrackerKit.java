@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.kits.KitBase;
@@ -12,7 +13,6 @@ import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

@@ -23,6 +23,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.spigotmc.ProtocolInjector.PacketTabHeader;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.game.GameStartingEvent;
 import promcgames.customevents.player.PlayerRankChangeEvent;
 import promcgames.customevents.player.timed.PlayerFirstThirtyMinutesOfPlaytimeEvent;
@@ -31,7 +34,6 @@ import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.servers.hub.items.HubSponsor;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;

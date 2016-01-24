@@ -9,11 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.game.GameWinEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.player.Disguise;
 import promcgames.player.trophies.Trophy;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

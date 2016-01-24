@@ -10,6 +10,7 @@ import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import promcgames.ProMcGames;
 import promcgames.gameapi.MiniGame;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.games.survivalgames.kits.premium.TrackerKit;
@@ -18,7 +19,6 @@ import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.ItemCreator;
 import promcgames.server.util.Loading;
 

@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
+import promcgames.ProPlugin;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.games.versus.kits.Archer;
@@ -56,7 +57,6 @@ import promcgames.player.TeamScoreboardHandler;
 import promcgames.player.scoreboard.BelowNameHealthScoreboardUtil;
 import promcgames.player.trophies.VersusTrophies;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.FileHandler;
 import promcgames.server.world.CPSDetector;
 

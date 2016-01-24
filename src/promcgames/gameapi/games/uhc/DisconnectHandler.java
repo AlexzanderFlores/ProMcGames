@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.PlayerSpectateStartEvent;
@@ -23,7 +24,6 @@ import promcgames.gameapi.games.uhc.events.PlayerTimeOutEvent;
 import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 
 public class DisconnectHandler implements Listener {

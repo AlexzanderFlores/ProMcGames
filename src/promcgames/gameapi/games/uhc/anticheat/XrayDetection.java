@@ -7,9 +7,9 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
 import promcgames.gameapi.games.uhc.WorldHandler;
 import promcgames.gameapi.games.uhc.border.BorderHandler;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 
 public class XrayDetection implements Listener {

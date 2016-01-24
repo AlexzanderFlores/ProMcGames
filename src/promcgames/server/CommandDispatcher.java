@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.timed.FiveSecondTaskEvent;
 import promcgames.customevents.timed.OneMinuteTaskEvent;
 import promcgames.player.account.AccountHandler.Ranks;

@@ -8,10 +8,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
+import promcgames.ProMcGames.Plugins;
 import promcgames.gameapi.games.versus.events.BattleEndEvent;
 import promcgames.player.trophies.Trophy;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;

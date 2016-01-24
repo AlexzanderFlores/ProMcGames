@@ -23,6 +23,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameLossEvent;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.game.GameWinEvent;
@@ -35,8 +37,6 @@ import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.bossbar.BossBar;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.tasks.DelayedTask;
 

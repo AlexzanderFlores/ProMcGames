@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.tournament.TournamentEndEvent;
 import promcgames.customevents.tournament.TournamentEndingEvent;
 import promcgames.customevents.tournament.TournamentRoundEndEvent;
@@ -18,7 +19,6 @@ import promcgames.player.EmeraldsHandler.EmeraldReason;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 
 /*

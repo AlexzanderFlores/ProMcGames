@@ -16,6 +16,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -23,7 +24,6 @@ import promcgames.gameapi.games.survivalgames.SurvivalGames;
 import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.EffectUtil;

@@ -12,10 +12,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.games.survivalgames.TieringHandler;
 import promcgames.player.Particles.ParticleTypes;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.StringUtil;
 

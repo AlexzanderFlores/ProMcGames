@@ -36,6 +36,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.PlayerAFKEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -49,7 +50,6 @@ import promcgames.player.MessageHandler;
 import promcgames.player.Particles;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.servers.hub.Parkour;
 import promcgames.server.servers.hub.SnowballFight;

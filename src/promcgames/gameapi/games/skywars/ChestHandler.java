@@ -19,6 +19,7 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.game.GameStartingEvent;
 import promcgames.customevents.player.ChestOpenEvent;
 import promcgames.customevents.player.MouseClickEvent;
@@ -26,7 +27,6 @@ import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.player.MessageHandler;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 import promcgames.server.util.ItemUtil;

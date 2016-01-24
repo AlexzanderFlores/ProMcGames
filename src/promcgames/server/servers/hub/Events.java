@@ -31,6 +31,8 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.util.Vector;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.PostPlayerJoinEvent;
 import promcgames.customevents.player.WaterSplashEvent;
@@ -42,8 +44,6 @@ import promcgames.player.TitleDisplayer;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.PerformanceHandler;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.hub.events.PlayerRidePlayerEvent;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;

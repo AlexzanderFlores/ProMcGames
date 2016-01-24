@@ -12,11 +12,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.FiveTickTaskEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame;
-import promcgames.server.ProMcGames;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 

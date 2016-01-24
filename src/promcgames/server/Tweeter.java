@@ -8,10 +8,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.gameapi.games.uhc.TweetHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 import twitter4j.Query;
 import twitter4j.QueryResult;

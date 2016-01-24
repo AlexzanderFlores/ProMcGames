@@ -16,11 +16,11 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.game.DeathmatchStartEvent;
 import promcgames.gameapi.SpawnPointHandler;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.player.MessageHandler;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.FileHandler;

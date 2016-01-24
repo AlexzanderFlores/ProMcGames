@@ -1,6 +1,6 @@
 package promcgames.server.servers.slave;
 
-import promcgames.server.ProPlugin;
+import promcgames.ProPlugin;
 import promcgames.server.networking.Server;
 
 public class Slave extends ProPlugin {

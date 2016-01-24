@@ -22,6 +22,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.game.GameEndingEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.PostPlayerJoinEvent;
@@ -29,9 +32,6 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

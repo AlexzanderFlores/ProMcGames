@@ -15,12 +15,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.TwoTickTaskEvent;
 import promcgames.gameapi.games.skywars.cages.CageHandler;
 import promcgames.gameapi.games.skywars.islands.IslandHandler;
 import promcgames.gameapi.kits.KitBase;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

@@ -1,7 +1,7 @@
 package promcgames.gameapi.modes;
 
+import promcgames.ProMcGames;
 import promcgames.gameapi.MiniGame.GameStates;
-import promcgames.server.ProMcGames;
 
 public class TDM extends ModeBase {
 	private int killLimit = 0;

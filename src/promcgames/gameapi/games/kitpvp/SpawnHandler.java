@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerSpectateEndEvent;
 import promcgames.gameapi.SpectatorHandler;
@@ -25,7 +26,6 @@ import promcgames.gameapi.games.kitpvp.ffa.KitPVP;
 import promcgames.gameapi.kits.KitBase;
 import promcgames.player.MessageHandler;
 import promcgames.player.trophies.KitPVPTrophies;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;

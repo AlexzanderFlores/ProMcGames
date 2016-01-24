@@ -7,14 +7,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.SpawnPointHandler;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.games.arcade.ArcadeGame;
 import promcgames.player.bossbar.BossBar;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 
 public class DragonRaces extends ArcadeGame {

@@ -22,6 +22,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.player.ChestOpenEvent;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
@@ -30,8 +32,6 @@ import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;

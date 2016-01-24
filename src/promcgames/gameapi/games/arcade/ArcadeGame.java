@@ -14,6 +14,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameLossEvent;
 import promcgames.customevents.game.GameWinEvent;
 import promcgames.customevents.game.PostGameStartEvent;
@@ -29,8 +31,6 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.bossbar.BossBar;
 import promcgames.player.scoreboard.SidebarScoreboardUtil;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.FileHandler;
 

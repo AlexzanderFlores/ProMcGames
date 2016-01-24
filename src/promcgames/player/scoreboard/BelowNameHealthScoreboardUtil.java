@@ -5,9 +5,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.player.Disguise;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.UnicodeUtil;
 
 public class BelowNameHealthScoreboardUtil extends BelowNameScoreboardUtil {

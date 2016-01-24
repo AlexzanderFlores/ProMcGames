@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame;
 import promcgames.gameapi.MiniGame.GameStates;
@@ -15,8 +17,6 @@ import promcgames.player.MessageHandler;
 import promcgames.player.TitleDisplayer;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;

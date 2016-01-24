@@ -9,8 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.timed.TenTickTaskEvent;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

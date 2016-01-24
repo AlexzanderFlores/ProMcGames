@@ -11,11 +11,11 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.player.TeamScoreboardHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.ServerLogger;
 import promcgames.server.events.GameNights;
 import promcgames.server.events.OMN;

@@ -14,6 +14,8 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.anticheat.AntiGamingChair;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
@@ -21,8 +23,6 @@ import promcgames.player.Disguise;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.PerformanceHandler;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 
 public class InventoryKillAuraDetection extends AntiGamingChair implements Listener {

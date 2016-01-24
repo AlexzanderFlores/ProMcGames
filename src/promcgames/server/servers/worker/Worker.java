@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.timed.FiveMinuteTaskEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
@@ -13,7 +14,6 @@ import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.CommandDispatcher;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.hub.RankTransferHandler;
 import promcgames.staff.Punishment;
 

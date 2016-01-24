@@ -10,11 +10,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.game.PlayerExpFillEvent_;
 import promcgames.customevents.player.PlayerSpectateStartEvent;
 import promcgames.customevents.timed.OneTickTaskEvent;
 import promcgames.player.Disguise;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;
 

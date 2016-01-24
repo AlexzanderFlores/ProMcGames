@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.PlayerHeadshotEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.gameapi.games.versus.events.BattleEndEvent;
 import promcgames.player.trophies.Trophy;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

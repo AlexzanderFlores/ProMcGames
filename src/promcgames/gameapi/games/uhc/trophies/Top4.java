@@ -8,9 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
+import promcgames.ProMcGames.Plugins;
 import promcgames.player.trophies.Trophy;
-import promcgames.server.ProPlugin;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;

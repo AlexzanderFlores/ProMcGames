@@ -7,10 +7,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.player.MessageHandler;
 import promcgames.server.CommandBase;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProMcGames.Plugins;
 
 public class EventUtil {
 	private static List<String> listeners = null;

@@ -12,12 +12,12 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.player.trophies.Trophy;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

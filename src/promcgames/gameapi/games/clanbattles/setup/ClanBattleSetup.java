@@ -10,13 +10,13 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.gameapi.TeamHandler;
 import promcgames.gameapi.games.clanbattles.ClanBattle;
 import promcgames.gameapi.games.survivalgames.SurvivalGames;
 import promcgames.player.MessageHandler;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.servers.clans.ClanHandler;
 import promcgames.server.tasks.DelayedTask;

@@ -12,13 +12,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
+import promcgames.ProPlugin;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.clans.battle.BattleHandler;
 import promcgames.server.servers.clans.battle.BattleHistoryHandler;
 import promcgames.server.servers.clans.invites.InviteHandler;

@@ -27,6 +27,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -38,8 +40,6 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EffectUtil;

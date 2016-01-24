@@ -16,6 +16,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.game.ScenarioStateChangeEvent;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
@@ -32,7 +33,6 @@ import promcgames.gameapi.scenarios.scenarios.TrueLove;
 import promcgames.gameapi.scenarios.scenarios.Vanilla;
 import promcgames.player.MessageHandler;
 import promcgames.server.CommandBase;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 import promcgames.server.util.ItemUtil;

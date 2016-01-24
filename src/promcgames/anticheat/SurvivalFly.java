@@ -18,12 +18,12 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerVelocityEvent;
 import org.bukkit.potion.PotionEffectType;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.player.ParkourCompleteEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.server.DB;
 import promcgames.server.PerformanceHandler;
-import promcgames.server.ProMcGames;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

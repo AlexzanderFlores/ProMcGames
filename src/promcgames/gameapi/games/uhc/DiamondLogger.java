@@ -13,10 +13,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.AsyncPlayerLeaveEvent;
 import promcgames.gameapi.games.uhc.events.DiamondMineEvent;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

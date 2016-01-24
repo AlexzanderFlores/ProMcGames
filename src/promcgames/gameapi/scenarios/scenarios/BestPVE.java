@@ -11,6 +11,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageEvent;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.game.GameKillEvent;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
@@ -22,9 +25,6 @@ import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
-import promcgames.server.ProMcGames.Plugins;
 
 public class BestPVE extends Scenario {
 	private static BestPVE instance = null;

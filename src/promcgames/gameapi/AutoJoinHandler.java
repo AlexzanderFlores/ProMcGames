@@ -9,12 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
+import promcgames.ProMcGames.Plugins;
 import promcgames.player.MessageHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 
 public class AutoJoinHandler implements Listener {

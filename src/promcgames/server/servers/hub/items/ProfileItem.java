@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.player.CommunityLevelHandler;
@@ -20,7 +21,6 @@ import promcgames.player.account.PlaytimeTracker;
 import promcgames.player.account.PlaytimeTracker.Playtime;
 import promcgames.player.account.PlaytimeTracker.TimeType;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.ItemCreator;
 import promcgames.server.util.ItemUtil;

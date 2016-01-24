@@ -13,10 +13,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.player.MessageHandler;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.clans.ClanHandler.ClanRank;
 import promcgames.server.servers.clans.ClanHandler.ClanStatus;
 import promcgames.server.servers.clans.battle.BattleHandler;

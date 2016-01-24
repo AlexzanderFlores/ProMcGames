@@ -13,6 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.gameapi.games.versus.kits.VersusKit;
@@ -20,8 +22,6 @@ import promcgames.gameapi.games.versus.kits.VersusKit.ArmorSlot;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.EventUtil;

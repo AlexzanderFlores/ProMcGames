@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerAFKEvent;
@@ -20,7 +21,6 @@ import promcgames.player.Particles;
 import promcgames.player.Particles.ParticleTypes;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.servers.hub.items.HubItemBase;
 import promcgames.server.servers.hub.items.cosmetic.PerkLoader;
 import promcgames.server.servers.hub.items.cosmetic.PerkLoader.Perk;

@@ -14,6 +14,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.anticheat.AntiGamingChair;
 import promcgames.customevents.game.GracePeriodEndingEvent;
 import promcgames.customevents.player.PlayerSpectateStartEvent;
@@ -23,8 +25,6 @@ import promcgames.gameapi.games.uhc.border.BorderHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 

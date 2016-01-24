@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Scoreboard;
 
-import promcgames.server.ProMcGames;
+import promcgames.ProMcGames;
 
 public class BelowNameScoreboardUtil extends ScoreboardBase {
 	public BelowNameScoreboardUtil(String name, String type) {

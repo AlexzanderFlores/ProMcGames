@@ -10,11 +10,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scoreboard.Team;
 
+import promcgames.ProMcGames;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.PlayerRankChangeEvent;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
-import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 
 public class TeamScoreboardHandler implements Listener {

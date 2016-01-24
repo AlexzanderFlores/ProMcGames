@@ -7,10 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.player.MessageHandler;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 
 public abstract class Trophy implements Listener {

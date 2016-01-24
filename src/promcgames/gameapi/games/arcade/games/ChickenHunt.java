@@ -22,6 +22,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.FifteenTickTaskEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
@@ -32,8 +34,6 @@ import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.ItemCreator;
 

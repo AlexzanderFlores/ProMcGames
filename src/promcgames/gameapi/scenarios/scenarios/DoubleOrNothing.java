@@ -8,9 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.scenarios.Scenario;
-import promcgames.server.ProMcGames;
 
 public class DoubleOrNothing extends Scenario {
 	private static DoubleOrNothing instance = null;

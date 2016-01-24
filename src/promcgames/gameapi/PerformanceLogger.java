@@ -5,13 +5,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameEndingEvent;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.server.DB;
 import promcgames.server.PerformanceHandler;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 public class PerformanceLogger implements Listener {

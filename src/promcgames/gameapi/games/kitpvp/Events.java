@@ -26,6 +26,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Scoreboard;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.RestartAnnounceEvent;
 import promcgames.customevents.ServerRestartEvent;
 import promcgames.customevents.game.GameDeathEvent;
@@ -38,7 +39,6 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.scoreboard.BelowNameHealthScoreboardUtil;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 public class Events implements Listener {

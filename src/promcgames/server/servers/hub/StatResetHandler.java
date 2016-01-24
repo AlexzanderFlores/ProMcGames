@@ -16,14 +16,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 import promcgames.server.util.ItemUtil;

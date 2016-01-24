@@ -14,10 +14,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
+import promcgames.ProMcGames;
+import promcgames.ProPlugin;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
-import promcgames.server.ProMcGames;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.ItemCreator;

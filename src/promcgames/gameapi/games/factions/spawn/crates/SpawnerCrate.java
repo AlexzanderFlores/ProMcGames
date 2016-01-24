@@ -16,10 +16,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.player.MessageHandler;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.ItemCreator;

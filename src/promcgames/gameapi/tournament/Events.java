@@ -7,6 +7,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
@@ -21,7 +22,6 @@ import promcgames.gameapi.tournament.Tournament.TournamentStatus;
 import promcgames.player.EmeraldsHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
-import promcgames.server.ProPlugin;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EventUtil;
 

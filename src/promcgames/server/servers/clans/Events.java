@@ -16,13 +16,13 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerViewStatsEvent;
 import promcgames.customevents.timed.TenSecondTaskEvent;
 import promcgames.gameapi.EloHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
-import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EffectUtil;

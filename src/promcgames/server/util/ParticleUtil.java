@@ -15,8 +15,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import promcgames.server.ProMcGames;
-import promcgames.server.ProMcGames.Plugins;
+import promcgames.ProMcGames;
+import promcgames.ProMcGames.Plugins;
 import promcgames.server.util.ReflectionUtil.PackageType;
 import promcgames.server.util.ReflectionUtil.PacketType;
 import promcgames.server.util.ReflectionUtil.SubPackageType;
