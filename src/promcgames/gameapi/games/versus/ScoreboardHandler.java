@@ -10,8 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.RestartAnnounceEvent;
 import promcgames.customevents.ServerRestartEvent;
 import promcgames.customevents.game.GameDeathEvent;
@@ -29,6 +27,8 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.scoreboard.SidebarScoreboardUtil;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 public class ScoreboardHandler implements Listener {

@@ -4,10 +4,10 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameKillEvent;
 import promcgames.player.trophies.Trophy;
+import promcgames.server.ProPlugin;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

@@ -26,8 +26,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.timed.FiveTickTaskEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.games.factions.CoinHandler;
@@ -38,6 +36,8 @@ import promcgames.player.Particles.ParticleTypes;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.CustomEntityFirework;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;

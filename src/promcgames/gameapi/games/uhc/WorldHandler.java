@@ -19,7 +19,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.PermissionAttachment;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
@@ -27,6 +26,7 @@ import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.games.uhc.border.BorderHandler;
 import promcgames.player.MessageHandler;
 import promcgames.server.BiomeSwap;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.FileHandler;
 import promcgames.server.util.ItemCreator;

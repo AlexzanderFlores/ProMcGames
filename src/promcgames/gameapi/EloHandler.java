@@ -9,13 +9,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.player.AsyncPlayerLeaveEvent;
 import promcgames.customevents.player.AsyncPostPlayerJoinEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 
 public class EloHandler implements Listener {

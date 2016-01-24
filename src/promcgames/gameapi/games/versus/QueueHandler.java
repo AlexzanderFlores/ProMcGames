@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.PlayerSpectateStartEvent;
 import promcgames.customevents.player.PlayerStaffModeEvent;
@@ -20,6 +19,7 @@ import promcgames.gameapi.games.versus.kits.VersusKit;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;

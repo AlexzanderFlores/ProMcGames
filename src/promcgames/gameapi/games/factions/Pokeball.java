@@ -29,7 +29,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.ServerRestartEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.MouseClickEvent.ClickType;
@@ -39,6 +38,7 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;

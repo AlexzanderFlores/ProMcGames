@@ -8,12 +8,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ProPlugin;
 import promcgames.server.servers.hub.items.HubItemBase;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EffectUtil;

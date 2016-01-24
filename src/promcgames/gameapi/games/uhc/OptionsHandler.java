@@ -21,12 +21,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.gameapi.scenarios.scenarios.CutClean;
 import promcgames.player.MessageHandler;
 import promcgames.server.CommandBase;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;

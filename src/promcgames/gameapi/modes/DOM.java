@@ -12,8 +12,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.customevents.timed.ThirtySecondTaskEvent;
 import promcgames.gameapi.MiniGame;
@@ -23,6 +21,8 @@ import promcgames.player.EmeraldsHandler;
 import promcgames.player.EmeraldsHandler.EmeraldReason;
 import promcgames.player.MessageHandler;
 import promcgames.player.Particles.ParticleTypes;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.Loading;

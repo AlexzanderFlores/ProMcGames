@@ -3,7 +3,7 @@ package promcgames.server.tasks;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
+import promcgames.server.ProMcGames;
 
 public class DelayedTask implements Listener {
 	public DelayedTask(Runnable runnable) {

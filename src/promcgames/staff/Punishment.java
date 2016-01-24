@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import promcgames.ProPlugin;
 import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
@@ -17,6 +16,7 @@ import promcgames.server.AutoBroadcasts;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 import promcgames.staff.ban.BanHandler;
 import promcgames.staff.ban.BanHandler.Violations;

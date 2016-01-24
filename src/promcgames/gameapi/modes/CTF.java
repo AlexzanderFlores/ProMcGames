@@ -16,8 +16,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -32,6 +30,8 @@ import promcgames.player.EmeraldsHandler;
 import promcgames.player.EmeraldsHandler.EmeraldReason;
 import promcgames.player.MessageHandler;
 import promcgames.player.Particles.ParticleTypes;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.ItemCreator;

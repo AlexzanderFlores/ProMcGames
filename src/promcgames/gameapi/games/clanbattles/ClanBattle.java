@@ -2,8 +2,6 @@ package promcgames.gameapi.games.clanbattles;
 
 import org.bukkit.entity.Player;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.games.clanbattles.setup.ClanBattleSetup;
@@ -13,6 +11,8 @@ import promcgames.gameapi.games.survivalgames.SurvivalGames;
 import promcgames.gameapi.kits.KitShop;
 import promcgames.player.trophies.SurvivalGamesTrophies;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.servers.clans.ClanHandler;
 
 /*

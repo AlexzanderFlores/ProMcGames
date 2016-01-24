@@ -8,8 +8,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.customevents.timed.TenTickTaskEvent;
@@ -19,6 +17,8 @@ import promcgames.gameapi.games.arcade.ArcadeGame;
 import promcgames.player.Disguise;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 
 public class ParkourRunner extends ArcadeGame {
 	private int z = -9;

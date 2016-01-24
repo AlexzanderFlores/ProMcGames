@@ -12,13 +12,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.games.uhc.HostHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EventUtil;
 

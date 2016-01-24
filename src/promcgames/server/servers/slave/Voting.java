@@ -8,10 +8,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProPlugin;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.CommandDispatcher;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.Tweeter;
 import promcgames.server.servers.hub.HubSponsorGiveaway;
 import promcgames.server.servers.hub.ScoreboardHandler;

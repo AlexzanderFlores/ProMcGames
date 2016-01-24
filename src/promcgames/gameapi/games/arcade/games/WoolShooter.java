@@ -15,8 +15,6 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.BlockIterator;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.TenTickTaskEvent;
 import promcgames.gameapi.MiniGame.GameStates;
@@ -25,6 +23,8 @@ import promcgames.gameapi.games.arcade.ArcadeGame;
 import promcgames.player.Disguise;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.bossbar.BossBar;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.ItemCreator;
 

@@ -9,11 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.timed.FifteenTickTaskEvent;
 import promcgames.player.Particles;
 import promcgames.player.Particles.ParticleTypes;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.servers.hub.items.cosmetic.elite.SpiralParticles;
 import promcgames.server.servers.hub.items.cosmetic.pro.ArmorSelectorItem;
 import promcgames.server.servers.hub.items.cosmetic.pro.ArmorSelectorItem.ArmorTypes;

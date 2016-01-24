@@ -12,11 +12,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.player.AsyncPlayerLeaveEvent;
 import promcgames.gameapi.TeleportCoolDown;
 import promcgames.player.MessageHandler;
 import promcgames.server.CommandBase;
+import promcgames.server.ProMcGames;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.EventUtil;

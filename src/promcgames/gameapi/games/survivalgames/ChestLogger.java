@@ -14,7 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.game.GameEndingEvent;
 import promcgames.customevents.player.ChestOpenEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -22,6 +21,7 @@ import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.player.Disguise;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

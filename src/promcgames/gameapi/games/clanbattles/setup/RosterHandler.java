@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.Team;
 
-import promcgames.ProMcGames;
 import promcgames.gameapi.TeamHandler;
 import promcgames.gameapi.games.clanbattles.ClanBattle;
 import promcgames.gameapi.games.clanbattles.setup.ClanBattleSetup.SetupPhase;
@@ -15,6 +14,7 @@ import promcgames.player.MessageHandler;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.servers.clans.ClanHandler;
 
 @SuppressWarnings("deprecation")

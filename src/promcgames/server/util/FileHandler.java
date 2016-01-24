@@ -11,7 +11,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 import net.minecraft.util.org.apache.commons.io.FileUtils;
-import promcgames.ProMcGames;
+import promcgames.server.ProMcGames;
 
 public class FileHandler {
 	public static void checkForUpdates() {

@@ -4,12 +4,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.game.GameStartingEvent;
 import promcgames.customevents.game.GameVotingEvent;
 import promcgames.gameapi.VotingHandler;
 import promcgames.gameapi.VotingHandler.VoteData;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 
 public class Events implements Listener {

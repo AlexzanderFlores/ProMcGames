@@ -10,14 +10,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.scenarios.Scenario;
 import promcgames.player.MessageHandler;
 import promcgames.server.AlertHandler;
 import promcgames.server.CommandBase;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.Tweeter;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EventUtil;

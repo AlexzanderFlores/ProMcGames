@@ -24,8 +24,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
@@ -33,6 +31,8 @@ import promcgames.player.Particles.ParticleTypes;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;

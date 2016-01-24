@@ -4,8 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.ServerRestartEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame;

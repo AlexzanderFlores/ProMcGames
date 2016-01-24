@@ -13,13 +13,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.TeleportCoolDown;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.CommandBase;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 public class Teleportation implements Listener {

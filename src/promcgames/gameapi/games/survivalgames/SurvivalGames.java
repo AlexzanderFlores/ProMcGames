@@ -6,8 +6,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapedRecipe;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.gameapi.MiniGame;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.games.clanbattles.ClanBattleStatsHandler;
@@ -41,6 +39,8 @@ import promcgames.gameapi.games.survivalgames.trophies.Tier1OnlyChallenge;
 import promcgames.gameapi.kits.KitShop;
 import promcgames.player.trophies.SurvivalGamesTrophies;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.ItemCreator;
 
 @SuppressWarnings("deprecation")

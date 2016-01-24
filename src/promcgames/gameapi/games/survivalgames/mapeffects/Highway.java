@@ -13,8 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.scheduler.BukkitTask;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.game.GameStartEvent;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.ConfigurationUtil;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;

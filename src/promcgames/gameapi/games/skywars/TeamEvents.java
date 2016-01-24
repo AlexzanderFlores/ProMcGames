@@ -13,8 +13,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameKillEvent;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.MiniGame.GameStates;
@@ -23,6 +21,8 @@ import promcgames.player.PartyHandler;
 import promcgames.player.PartyHandler.Party;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 

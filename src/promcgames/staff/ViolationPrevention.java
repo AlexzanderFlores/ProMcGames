@@ -15,12 +15,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.AsyncPlayerLeaveEvent;
 import promcgames.player.Disguise;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 
 public class ViolationPrevention implements Listener {

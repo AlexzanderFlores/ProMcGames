@@ -1,7 +1,5 @@
 package promcgames.gameapi.games.skywars;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.gameapi.MiniGame;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.TeamDetector;
@@ -23,6 +21,8 @@ import promcgames.gameapi.scenarios.scenarios.CutClean;
 import promcgames.player.scoreboard.BelowNameScoreboardUtil;
 import promcgames.player.trophies.SkyWarsTrophies;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 
 public class SkyWars extends MiniGame {
 	public SkyWars() {

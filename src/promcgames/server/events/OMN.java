@@ -14,7 +14,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
@@ -22,6 +21,7 @@ import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.AlertHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.Tweeter;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;

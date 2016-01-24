@@ -8,8 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.gameapi.games.versus.trophies.ArcherChampion;
@@ -36,6 +34,8 @@ import promcgames.gameapi.games.versus.trophies.SurvivalGamesChampion;
 import promcgames.gameapi.games.versus.trophies.SwordsmanChampion;
 import promcgames.gameapi.games.versus.trophies.TNTChampion;
 import promcgames.gameapi.games.versus.trophies.UHCChampion;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.servers.hub.items.TrophiesItem;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;

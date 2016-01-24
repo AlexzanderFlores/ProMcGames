@@ -4,8 +4,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import promcgames.ProMcGames;
 import promcgames.player.scoreboard.SidebarScoreboardUtil;
+import promcgames.server.ProMcGames;
 import promcgames.server.servers.clans.battle.BattleHandler;
 import promcgames.server.util.EventUtil;
 

@@ -1,8 +1,8 @@
 package promcgames.server.servers.uhc;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.player.TeamScoreboardHandler;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.ServerLogger;
 import promcgames.server.servers.clans.HubItem;
 import promcgames.server.servers.hub.items.CosmeticsItem;

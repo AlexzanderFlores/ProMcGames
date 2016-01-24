@@ -21,8 +21,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameEndingEvent;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -31,6 +29,8 @@ import promcgames.gameapi.SpawnPointHandler;
 import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 @SuppressWarnings("deprecation")

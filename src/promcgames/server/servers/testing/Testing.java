@@ -12,11 +12,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import promcgames.ProPlugin;
 import promcgames.gameapi.games.contention.projectilepath.ProjectilePath;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
+import promcgames.server.ProPlugin;
 import promcgames.server.Tweeter;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.StringUtil;

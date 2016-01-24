@@ -20,7 +20,6 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.scoreboard.Team;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.TenTickTaskEvent;
 import promcgames.gameapi.SpectatorHandler;
@@ -28,6 +27,7 @@ import promcgames.gameapi.games.uhc.border.BorderHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.CommandBase;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.StringUtil;
 

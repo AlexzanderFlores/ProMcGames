@@ -14,15 +14,15 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.customevents.player.AsyncPlayerLeaveEvent;
 import promcgames.customevents.player.timed.PlayerDayOfPlaytimeEvent;
 import promcgames.customevents.player.timed.PlayerHourOfPlaytimeEvent;
 import promcgames.player.account.AccountHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

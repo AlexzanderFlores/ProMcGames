@@ -13,7 +13,6 @@ import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProPlugin;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.games.kitpvp.AutoRegenHandler;
@@ -48,6 +47,7 @@ import promcgames.gameapi.games.kitpvp.trophies.Strength;
 import promcgames.gameapi.kits.KitShop;
 import promcgames.player.trophies.KitPVPTrophies;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.ServerLogger;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.world.CPSDetector;

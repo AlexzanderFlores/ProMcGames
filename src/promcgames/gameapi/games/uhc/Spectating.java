@@ -17,13 +17,13 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.Inventory;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerSpectateCommandEvent;
 import promcgames.customevents.player.PlayerSpectateStartEvent;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 

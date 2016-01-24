@@ -11,8 +11,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.PermissionAttachment;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.player.timed.PlayerFiveMinuteConnectedEvent;
 import promcgames.customevents.player.timed.PlayerFiveSecondConnectedOnceEvent;
 import promcgames.customevents.player.timed.PlayerOneHourConnectedEvent;

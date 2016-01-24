@@ -11,11 +11,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.player.AsyncPlayerLeaveEvent;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.TimeUtil;
 

@@ -8,14 +8,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.gameapi.games.uhc.border.BorderHandler;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;
 

@@ -10,7 +10,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.PlayerViewStatsEvent;
 import promcgames.gameapi.games.versus.events.BattleEndEvent;
@@ -19,6 +18,7 @@ import promcgames.player.MessageHandler;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.DoubleUtil;
 import promcgames.server.util.EventUtil;

@@ -8,12 +8,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame;
 import promcgames.player.MessageHandler;
 import promcgames.player.PlayerMove;
 import promcgames.player.bossbar.BossBar;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;

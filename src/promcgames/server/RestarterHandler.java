@@ -5,15 +5,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.customevents.RestartAnnounceEvent;
 import promcgames.customevents.timed.FiveMinuteTaskEvent;
 import promcgames.customevents.timed.FiveSecondTaskEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EventUtil;
 

@@ -8,8 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GracePeriodEndingEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.player.MessageHandler;
@@ -17,6 +15,8 @@ import promcgames.player.TitleDisplayer;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.player.bossbar.BossBar;
 import promcgames.server.CommandBase;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EffectUtil;

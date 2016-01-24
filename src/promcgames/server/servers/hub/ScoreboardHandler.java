@@ -8,12 +8,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.FiveTickTaskEvent;
 import promcgames.customevents.timed.TenSecondTaskEvent;
 import promcgames.player.scoreboard.SidebarScoreboardUtil;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

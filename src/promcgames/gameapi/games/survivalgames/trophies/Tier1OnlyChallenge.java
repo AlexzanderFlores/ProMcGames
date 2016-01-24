@@ -8,8 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.game.GameWinEvent;
 import promcgames.customevents.player.ChestOpenEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
@@ -18,6 +16,8 @@ import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.games.survivalgames.TieringHandler;
 import promcgames.player.Disguise;
 import promcgames.player.trophies.Trophy;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.ItemCreator;
 

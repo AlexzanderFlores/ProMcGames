@@ -13,9 +13,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.player.bossbar.BossBar;
+import promcgames.server.ProMcGames;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.CountDownUtil;
 import promcgames.server.util.EffectUtil;

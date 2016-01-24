@@ -17,14 +17,14 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.anticheat.AntiGamingChair;
 import promcgames.customevents.game.GameKillEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.player.MessageHandler;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

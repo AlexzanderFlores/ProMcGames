@@ -27,14 +27,14 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.StatsChangeEvent;
 import promcgames.gameapi.games.versus.kits.VersusKit;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 
 @SuppressWarnings("deprecation")

@@ -1,4 +1,4 @@
-package promcgames;
+package promcgames.server;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -80,7 +80,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.ServerRestartEvent;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.game.GameKillEvent;
@@ -107,6 +106,7 @@ import promcgames.player.TitleDisplayer;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.DB.Databases;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.networking.Instruction;
 import promcgames.server.networking.Instruction.Inst;
 import promcgames.server.nms.npcs.NPCRegistrationHandler.NPCs;

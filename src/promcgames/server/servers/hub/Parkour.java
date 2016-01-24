@@ -24,7 +24,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.customevents.player.ParkourCompleteEvent;
 import promcgames.customevents.player.PartyDeleteEvent;
@@ -40,6 +39,7 @@ import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.servers.hub.items.HubItemBase;
 import promcgames.server.tasks.AsyncDelayedTask;

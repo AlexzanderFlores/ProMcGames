@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.spigotmc.ProtocolInjector.PacketTitle;
 import org.spigotmc.ProtocolInjector.PacketTitle.Action;
 
-import promcgames.ProPlugin;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.StringUtil;
 import promcgames.server.util.TextConverter;
 

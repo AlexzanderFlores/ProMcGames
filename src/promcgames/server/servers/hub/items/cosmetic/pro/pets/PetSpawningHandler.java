@@ -19,8 +19,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
-import promcgames.ProPlugin;
 import promcgames.player.Disguise;
+import promcgames.server.ProPlugin;
 import promcgames.server.servers.hub.items.cosmetic.pro.pets.PetSelectorItem.PetTypes;
 import promcgames.server.servers.hub.items.cosmetic.pro.pets.entities.ChickenPet;
 import promcgames.server.servers.hub.items.cosmetic.pro.pets.entities.CowPet;

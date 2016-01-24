@@ -14,7 +14,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.AsyncPlayerJoinEvent;
 import promcgames.customevents.player.AsyncPostPlayerJoinEvent;
 import promcgames.customevents.player.PartyChangeServerEvent;
@@ -27,6 +26,7 @@ import promcgames.player.account.AccountHandler;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;

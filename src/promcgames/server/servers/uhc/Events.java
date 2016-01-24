@@ -14,11 +14,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.player.WaterSplashEvent;
 import promcgames.customevents.player.timed.PlayerFiveSecondConnectedOnceEvent;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ProMcGames;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;
 import promcgames.server.world.CPSDetector;

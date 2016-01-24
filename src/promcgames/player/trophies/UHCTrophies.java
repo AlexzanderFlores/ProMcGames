@@ -8,8 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.gameapi.games.uhc.trophies.DiamondHunter1;
@@ -23,6 +21,8 @@ import promcgames.gameapi.games.uhc.trophies.Top2;
 import promcgames.gameapi.games.uhc.trophies.Top4;
 import promcgames.gameapi.games.uhc.trophies.Top8;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.servers.hub.items.TrophiesItem;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;

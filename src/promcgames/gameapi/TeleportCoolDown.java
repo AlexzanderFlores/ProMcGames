@@ -7,10 +7,10 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 public class TeleportCoolDown implements Listener {

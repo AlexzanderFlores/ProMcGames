@@ -10,8 +10,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.MouseClickEvent;
 import promcgames.gameapi.games.skywars.trophies.teams.MonthlyKillSeeker1;
@@ -26,6 +24,8 @@ import promcgames.gameapi.games.skywars.trophies.teams.VictoryHunter2;
 import promcgames.gameapi.games.skywars.trophies.teams.VictoryHunter3;
 import promcgames.gameapi.games.skywars.trophies.teams.VictoryHunter4;
 import promcgames.gameapi.games.skywars.trophies.teams.VictoryHunter5;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.servers.hub.items.TrophiesItem;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;

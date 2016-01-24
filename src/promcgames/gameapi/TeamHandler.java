@@ -16,13 +16,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.scoreboard.Team;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.game.GameDeathEvent;
 import promcgames.customevents.game.GameLossEvent;
 import promcgames.customevents.game.GameWinEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.gameapi.MiniGame.GameStates;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProMcGames;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 

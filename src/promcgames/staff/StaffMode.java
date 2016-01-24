@@ -20,9 +20,6 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerAFKEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.PlayerStaffModeEvent;
@@ -37,6 +34,9 @@ import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
 import promcgames.server.PerformanceHandler;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 
 public class StaffMode implements Listener {

@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.tournament.TournamentEndEvent;
 import promcgames.customevents.tournament.TournamentRoundStartEvent;
 import promcgames.gameapi.games.versus.MapProvider;
@@ -17,6 +16,7 @@ import promcgames.gameapi.games.versus.kits.VersusKit;
 import promcgames.gameapi.tournament.Tournament;
 import promcgames.gameapi.tournament.Tournament.Matchup;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 public class VersusTournament implements Listener {

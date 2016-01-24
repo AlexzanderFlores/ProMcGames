@@ -24,10 +24,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.timed.OneTickTaskEvent;
 import promcgames.player.Disguise;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.DelayedTask;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.VectorUtil;

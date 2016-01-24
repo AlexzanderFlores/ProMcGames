@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import promcgames.ProMcGames;
-import promcgames.ProPlugin;
 import promcgames.gameapi.MiniGame;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.VotingHandler;
@@ -20,6 +18,8 @@ import promcgames.gameapi.games.arcade.games.TNTBomber;
 import promcgames.gameapi.games.arcade.games.TNTWarfare;
 import promcgames.gameapi.games.arcade.games.WoolShooter;
 import promcgames.server.DB;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
 
 public class Arcade extends MiniGame {
 	private static List<ArcadeGame> games = null;

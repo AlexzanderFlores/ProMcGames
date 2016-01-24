@@ -7,10 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
 import promcgames.customevents.timed.OneMinuteTaskEvent;
 import promcgames.gameapi.games.uhc.HostedEvent;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.StringUtil;
 import promcgames.server.util.UnicodeUtil;

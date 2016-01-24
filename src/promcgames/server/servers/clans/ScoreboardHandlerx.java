@@ -10,13 +10,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.DisplaySlot;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.PostPlayerJoinEvent;
 import promcgames.customevents.player.timed.PlayerTenSecondConnectedEvent;
 import promcgames.gameapi.EloHandler;
 import promcgames.player.scoreboard.SidebarScoreboardUtil;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.tasks.AsyncDelayedTask;
 import promcgames.server.util.EventUtil;
 

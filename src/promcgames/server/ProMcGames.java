@@ -1,4 +1,4 @@
-package promcgames;
+package promcgames.server;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,17 +50,7 @@ import promcgames.player.account.PlaytimeTracker;
 import promcgames.player.bossbar.Scroller;
 import promcgames.player.scoreboard.BelowNameScoreboardUtil;
 import promcgames.player.scoreboard.SidebarScoreboardUtil;
-import promcgames.server.AlertHandler;
-import promcgames.server.AutoAlerts;
-import promcgames.server.AutoBroadcasts;
-import promcgames.server.CommandDispatcher;
-import promcgames.server.DB;
 import promcgames.server.DB.Databases;
-import promcgames.server.GeneralEvents;
-import promcgames.server.GlobalCommands;
-import promcgames.server.PerformanceHandler;
-import promcgames.server.RankAdvertiser;
-import promcgames.server.RestarterHandler;
 import promcgames.server.networking.Client;
 import promcgames.server.servers.building.Building;
 import promcgames.server.servers.clans.Clans;

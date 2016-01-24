@@ -11,9 +11,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import promcgames.ProPlugin;
 import promcgames.player.MessageHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.ProPlugin;
 
 public class ItemUtil {
 	public static ItemStack getSkull(String name) {

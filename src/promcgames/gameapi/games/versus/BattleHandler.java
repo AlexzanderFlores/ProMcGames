@@ -27,15 +27,15 @@ import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.customevents.game.SpawnTNTBlocksEvent;
 import promcgames.gameapi.StatsHandler;
 import promcgames.gameapi.games.versus.events.BattleEndEvent;
 import promcgames.gameapi.games.versus.kits.VersusKit;
 import promcgames.player.MessageHandler;
 import promcgames.server.CommandBase;
+import promcgames.server.ProMcGames;
+import promcgames.server.ProPlugin;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.util.DoubleUtil;
 import promcgames.server.util.EffectUtil;
 import promcgames.server.util.EventUtil;

@@ -20,8 +20,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import promcgames.ProMcGames;
 import promcgames.customevents.ServerRestartEvent;
+import promcgames.server.ProMcGames;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.util.EventUtil;
 import promcgames.server.util.StringUtil;

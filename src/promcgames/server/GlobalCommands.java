@@ -11,9 +11,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import promcgames.ProMcGames;
-import promcgames.ProMcGames.Plugins;
-import promcgames.ProPlugin;
 import promcgames.gameapi.SpectatorHandler;
 import promcgames.gameapi.games.factions.CoinHandler;
 import promcgames.player.MessageHandler;
@@ -25,6 +22,7 @@ import promcgames.player.trophies.SkyWarsTrophies;
 import promcgames.player.trophies.SurvivalGamesTrophies;
 import promcgames.player.trophies.UHCTrophies;
 import promcgames.player.trophies.VersusTrophies;
+import promcgames.server.ProMcGames.Plugins;
 import promcgames.server.servers.hub.items.HubSponsor;
 import promcgames.server.servers.hub.items.TrophiesItem;
 import promcgames.server.tasks.AsyncDelayedTask;

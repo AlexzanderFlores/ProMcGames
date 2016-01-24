@@ -15,7 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.game.GameStartEvent;
 import promcgames.customevents.game.PostGameStartingEvent;
 import promcgames.customevents.player.SpecialKitDenyEvent;
@@ -31,6 +30,7 @@ import promcgames.gameapi.games.skywars.islands.IslandHandler;
 import promcgames.gameapi.kits.KitBase;
 import promcgames.gameapi.kits.KitShop;
 import promcgames.player.MessageHandler;
+import promcgames.server.ProPlugin;
 import promcgames.server.util.EventUtil;
 
 @SuppressWarnings("deprecation")

@@ -18,7 +18,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 
-import promcgames.ProPlugin;
 import promcgames.customevents.player.InventoryItemClickEvent;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.player.timed.PlayerFiveSecondConnectedOnceEvent;
@@ -32,6 +31,7 @@ import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.ChatClickHandler;
 import promcgames.server.CommandBase;
 import promcgames.server.DB;
+import promcgames.server.ProPlugin;
 import promcgames.server.nms.npcs.NPCEntity;
 import promcgames.server.servers.hub.items.HubSponsor;
 import promcgames.server.tasks.AsyncDelayedTask;
