@@ -106,7 +106,6 @@ import promcgames.player.MessageHandler;
 import promcgames.player.TitleDisplayer;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
-import promcgames.server.DB;
 import promcgames.server.DB.Databases;
 import promcgames.server.networking.Instruction;
 import promcgames.server.networking.Instruction.Inst;
