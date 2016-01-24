@@ -131,6 +131,11 @@ public class TournamentQueueHandler implements Listener {
 							MessageHandler.sendMessage(player, "You have been added to the queue");
 							MessageHandler.sendMessage(player, "The tournament will begin soon");
 							MessageHandler.sendMessage(player, "To leave the queue, click the NPC again");
+							if(player.getInventory().getItem(4) == null) {
+								player.getInventory().setItem(4, KitVoter.getItem());
+							} else {
+								player.getInventory().addItem(KitVoter.getItem());
+							}
 							if(instance.queue.size() >= instance.startPlayers && !instance.countdownRunning) {
 								instance.countdown = 600;
 								instance.countdownRunning = true;
@@ -167,12 +172,14 @@ public class TournamentQueueHandler implements Listener {
 					instance.setQueueEnabled(true);
 					MessageHandler.alert("A versus tournament is now available to join");
 					MessageHandler.alert("Click the &bTournament Skeleton &ain the versus lobby to join");
+					new KitVoter();
 				} else if(arguments[0].equalsIgnoreCase("stop")) {
 					instance.setQueueEnabled(false);
 					instance.queue.clear();
 					instance.countdownRunning = true;
 					MessageHandler.sendMessage(sender, "Versus tournament queue has been cleared and stopped");
 					MessageHandler.alert("The versus tournament has been cancelled");
+					KitVoter.getInstance().disable();
 				} else if(arguments[0].equalsIgnoreCase("list")) {
 					MessageHandler.sendMessage(sender, "Queue size: " + instance.queue.size());
 					String message = "Players: ";

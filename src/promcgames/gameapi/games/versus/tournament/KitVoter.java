@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
@@ -98,6 +99,7 @@ public class KitVoter implements Listener {
 	public void onInventoryItemClick(InventoryItemClickEvent event) {
 		Player player = event.getPlayer();
 		if(TournamentQueueHandler.getInstance().getQueue().contains(player.getName()) && event.getTitle().equals(inventoryName)) {
+			event.setCancelled(true);
 			VersusKit kit = kits.get(event.getSlot());
 			KitVote vote = getKitVote(player);
 			if(vote != null && vote.getKit() == kit) {
@@ -110,6 +112,7 @@ public class KitVoter implements Listener {
 				instance.votes.add(new KitVote(player.getName(), kit, votes));
 				MessageHandler.sendMessage(player, "Voted for the &b" + kit.getName() + " &akit");
 			}
+			player.closeInventory();
 		}
 	}
 	
@@ -121,17 +124,8 @@ public class KitVoter implements Listener {
 				InventoryView view = player.getOpenInventory();
 				if(view != null) {
 					int a = 0;
-					KitVote vote = getKitVote(player);
-					VersusKit votedKit = null;
-					if(vote != null) {
-						votedKit = vote.getKit();
-					}
 					for(VersusKit kit : kits) {
-						if(votedKit != null && kit == votedKit) {
-							view.setItem(a++, new ItemCreator(kit.getIcon()).setAmount(getVotesForKit(kit)).addLore("&bYou voted for this kit").getItemStack());
-						} else {
-							view.setItem(a++, new ItemCreator(kit.getIcon()).setAmount(getVotesForKit(kit)).addLore("&bClick to vote for this kit").getItemStack());
-						}
+						view.getItem(a++).setAmount(getVotesForKit(kit));
 					}
 				}
 			}
@@ -147,6 +141,16 @@ public class KitVoter implements Listener {
 		}
 	}
 	
+	@EventHandler
+	public void onInventoryClose(InventoryCloseEvent event) {
+		if(event.getPlayer() instanceof Player) {
+			Player player = (Player) event.getPlayer();
+			if(watching.contains(player.getName())) {
+				watching.remove(player.getName());
+			}
+		}
+	}
+	
 	public void disable() {
 		HandlerList.unregisterAll(this);
 		kits.clear();
@@ -155,6 +159,11 @@ public class KitVoter implements Listener {
 		kits = null;
 		votes = null;
 		watching = null;
+		for(Player player : ProPlugin.getPlayers()) {
+			if(player.getInventory().contains(item)) {
+				player.getInventory().remove(item);
+			}
+		}
 		instance = null;
 	}
 	
