@@ -31,6 +31,14 @@ public class ViolationPrevention implements Listener {
 
 	public ViolationPrevention() {
 		mutes = new ArrayList<String>();
+		mutes.add("do your job");
+		mutes.add("do ur job");
+		mutes.add("doyourjob");
+		mutes.add("dourjob");
+		mutes.add("bad staff");
+		mutes.add("badstaff");
+		mutes.add("horrible staff");
+		mutes.add("horriblestaff");
 		mutes.add("bacca");
 		mutes.add("autistic");
 		mutes.add("autism");
