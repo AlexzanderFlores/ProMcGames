@@ -87,7 +87,7 @@ public class ScoreboardHandler implements Listener {
 	
 	private static int getMax() {
 		int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-		return day == 1 || day == 6 || day == 7 ? 125 : 100;
+		return day == 1 || day == 6 || day == 7 ? 110 : 75;
 	}
 	
 	public static String getDailyVotes() {
