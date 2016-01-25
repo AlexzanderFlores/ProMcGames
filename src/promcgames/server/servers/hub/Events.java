@@ -27,6 +27,7 @@ import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.util.Vector;
@@ -43,6 +44,7 @@ import promcgames.player.MessageHandler;
 import promcgames.player.TitleDisplayer;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
+import promcgames.server.DB;
 import promcgames.server.PerformanceHandler;
 import promcgames.server.servers.hub.events.PlayerRidePlayerEvent;
 import promcgames.server.util.EffectUtil;
@@ -270,6 +272,13 @@ public class Events implements Listener {
 			Random random = new Random();
 			int value = random.nextInt(7) + 2;
 			ParticleEffect.FIREWORKS_SPARK.display(spawn, (float) (random.nextBoolean() ? value : value * -1), 4, (float) (random.nextBoolean() ? value : value * -1), 0, 1);
+		}
+	}
+	
+	@EventHandler
+	public void onPlayerKick(PlayerKickEvent event) {
+		if(event.getLeaveMessage().contains("We do not allow connections from VPNs") && DB.PLAYERS_VPN.isUUIDSet(event.getPlayer().getUniqueId())) {
+			event.setCancelled(true);
 		}
 	}
 }

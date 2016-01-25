@@ -144,6 +144,10 @@ commands:
     description: Detects if a player has kill aura enabled
     usage: /killAura <player name>
 
+  vpn:
+    description: Toggles the ability for a player to use a VPN
+    usage: /vpn <name>
+
   lag:
     description: Displays lag information about that specific server
     usage: /lag

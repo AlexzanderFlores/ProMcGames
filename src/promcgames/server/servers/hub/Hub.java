@@ -1,6 +1,7 @@
 package promcgames.server.servers.hub;
 
 import java.io.File;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -13,9 +14,12 @@ import org.bukkit.entity.Player;
 
 import promcgames.ProMcGames;
 import promcgames.ProPlugin;
+import promcgames.player.MessageHandler;
 import promcgames.player.TeamScoreboardHandler;
+import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.CommandBase;
+import promcgames.server.DB;
 import promcgames.server.ServerLogger;
 import promcgames.server.events.GameNights;
 import promcgames.server.events.OMN;
@@ -118,6 +122,24 @@ public class Hub extends ProPlugin {
 			@Override
 			public boolean execute(CommandSender sender, String [] arguments) {
 				
+				return true;
+			}
+		}.setRequiredRank(Ranks.OWNER);
+		
+		new CommandBase("vpn", 1) {
+			@Override
+			public boolean execute(CommandSender sender, String [] arguments) {
+				String name = arguments[0];
+				UUID uuid = AccountHandler.getUUID(name);
+				if(uuid == null) {
+					MessageHandler.sendMessage(sender, "&c" + name + " has never logged in before");
+				} else if(DB.PLAYERS_VPN.isUUIDSet(uuid)) {
+					DB.PLAYERS_VPN.deleteUUID(uuid);
+					MessageHandler.sendMessage(sender, "&cDisallowed " + name + " from using VPNs");
+				} else {
+					DB.PLAYERS_VPN.insert("'" + uuid.toString() + "'");
+					MessageHandler.sendMessage(sender, "Allowed " + name + " to use VPNs");
+				}
 				return true;
 			}
 		}.setRequiredRank(Ranks.OWNER);
