@@ -277,7 +277,7 @@ public class Events implements Listener {
 	
 	@EventHandler
 	public void onPlayerKick(PlayerKickEvent event) {
-		if(event.getLeaveMessage().contains("We do not allow connections from VPNs") && DB.PLAYERS_VPN.isUUIDSet(event.getPlayer().getUniqueId())) {
+		if((event.getReason().contains("VPNs") || event.getLeaveMessage().contains("VPNs")) && DB.PLAYERS_VPN.isUUIDSet(event.getPlayer().getUniqueId())) {
 			event.setCancelled(true);
 		}
 	}

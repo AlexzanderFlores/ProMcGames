@@ -19,7 +19,6 @@ import promcgames.ProMcGames.Plugins;
 import promcgames.anticheat.AntiGamingChair;
 import promcgames.customevents.player.PlayerLeaveEvent;
 import promcgames.customevents.timed.OneSecondTaskEvent;
-import promcgames.player.Disguise;
 import promcgames.player.account.AccountHandler;
 import promcgames.player.account.AccountHandler.Ranks;
 import promcgames.server.PerformanceHandler;
@@ -45,7 +44,7 @@ public class InventoryKillAuraDetection extends AntiGamingChair implements Liste
 	}
 	
 	private int getSecondsLived(Player player) {
-		return hub ? player.getTicksLived() / 20 : secondsLived.get(Disguise.getName(player));
+		return hub ? player.getTicksLived() / 20 : secondsLived.get(player.getName());
 	}
 	
 	private boolean ableToCheck(Player player) {
@@ -61,27 +60,27 @@ public class InventoryKillAuraDetection extends AntiGamingChair implements Liste
 				int ping = PerformanceHandler.getPing(player);
 				boolean pingOk = ping > 0 && ping < 100;
 				if(player.getLocation().getBlock().getRelative(0, -1, 0).getType() != Material.AIR && ableToCheck(player) && notIgnored(player) && pingOk) {
-					if(hub && spawningLocation.containsKey(Disguise.getName(player))) {
+					if(hub && spawningLocation.containsKey(player.getName())) {
 						double x1 = player.getLocation().getX();
 						double z1 = player.getLocation().getZ();
-						double x2 = spawningLocation.get(Disguise.getName(player)).getX();
-						double z2 = spawningLocation.get(Disguise.getName(player)).getZ();
+						double x2 = spawningLocation.get(player.getName()).getX();
+						double z2 = spawningLocation.get(player.getName()).getZ();
 						if(x1 != x2 || z1 != z2) {
-							spawningLocation.remove(Disguise.getName(player));
+							spawningLocation.remove(player.getName());
 							return;
 						}
 					}
 					int attacks = 0;
-					if(attacksPerSecond.containsKey(Disguise.getName(player))) {
-						attacks = attacksPerSecond.get(Disguise.getName(player));
+					if(attacksPerSecond.containsKey(player.getName())) {
+						attacks = attacksPerSecond.get(player.getName());
 					}
 					if(++attacks >= 7) {
 						ban(player);
 					} else {
-						attacksPerSecond.put(Disguise.getName(player), attacks);
+						attacksPerSecond.put(player.getName(), attacks);
 					}
 				} else if(PerformanceHandler.getPing(player) > getMaxPing()) {
-					attacksPerSecond.remove(Disguise.getName(player));
+					attacksPerSecond.remove(player.getName());
 				}
 			}
 		}
@@ -100,9 +99,9 @@ public class InventoryKillAuraDetection extends AntiGamingChair implements Liste
 		if(isEnabled()) {
 			attacksPerSecond.clear();
 			for(Player player : Bukkit.getOnlinePlayers()) {
-				secondsLived.put(Disguise.getName(player), secondsLived.get(Disguise.getName(player)) + 1);
-				if(getSecondsLived(player) >= maxSeconds && spawningLocation.containsKey(Disguise.getName(player))) {
-					spawningLocation.remove(Disguise.getName(player));
+				secondsLived.put(player.getName(), secondsLived.get(player.getName()) + 1);
+				if(getSecondsLived(player) >= maxSeconds && spawningLocation.containsKey(player.getName())) {
+					spawningLocation.remove(player.getName());
 				}
 			}
 		}
