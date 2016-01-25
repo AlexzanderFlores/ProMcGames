@@ -43,7 +43,7 @@ import promcgames.staff.Punishment;
 public class BanHandler extends Punishment {
 	private static List<String> checkedForBanned = null;
 	private static List<String> hasBeenBanned = null;
-	public enum Violations {HACKING, XRAY, BLACK_LISTED_MODS, COMBAT_MACROS, CHARGING_BACK, EXPLOITING_BUGS}
+	public enum Violations {HACKING, XRAY, BLACK_LISTED_MODS, COMBAT_MACROS, CHARGING_BACK, EXPLOITING_BUGS, FAKE_PROOF}
 	
 	public BanHandler() {
 		super("Banned");
